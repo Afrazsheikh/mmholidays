@@ -153,6 +153,61 @@ function slugify(text) {
     .replace(/\-\-+/g, "-"); // collapse multiple hyphens
 }
 
+// function renderPackages(packagesToDisplay) {
+//   packagesGrid.innerHTML = "";
+
+//   if (packagesToDisplay.length === 0) {
+//     packagesGrid.innerHTML = `<p style="text-align:center;">No packages found.</p>`;
+//     return;
+//   }
+
+//   const ownerWhatsApp = "8219964869"; // Replace with your WhatsApp number including country code
+
+//   packagesToDisplay.forEach((pkg) => {
+//     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
+//     const packageSlug = slugify(pkg.name);
+//     const waMessage = encodeURIComponent(
+//       `Hi, I would like a callback for the package: ${pkg.name}`
+//     );
+//     const waUrl = `https://wa.me/${ownerWhatsApp}?text=${waMessage}`;
+
+//     const cardHTML = `
+//       <div class="package-card ${isSelected ? "selected" : ""}"
+//            data-id="${pkg.id}"
+//            id="${packageSlug}">
+//         <img src="images/${pkg.imageUrl}" class="card-image" alt="${pkg.name}">
+//         ${
+//           isSelected
+//             ? '<span class="selection-checkmark"><i class="fas fa-check"></i></span>'
+//             : ""
+//         }
+//         <div class="card-content">
+//           <h3>${pkg.name}</h3>
+//           <p class="duration">${pkg.duration}</p>
+//           <div class="action-buttons">
+//             <button class="book-now-btn">BOOK NOW</button>
+//             <a href="${waUrl}" target="_blank" class="callback-btn">REQUEST A CALLBACK</a>
+//           </div>
+//           <div class="card-footer">
+//             <div class="price-info">
+//               <span class="original-price">$${pkg.price}</span>
+//               <span class="offer-price">$${pkg.offerPrice}</span>
+//               <span class="offer-tag">OFFER!</span>
+//             </div>
+//             <button class="selection-toggle-btn ${
+//               isSelected ? "selected" : ""
+//             }" data-action="${isSelected ? "remove" : "add"}">
+//               <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+//               ${isSelected ? "Remove from Selection" : "Add to Selection"}
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     `;
+
+//     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
+//   });
+// }
 function renderPackages(packagesToDisplay) {
   packagesGrid.innerHTML = "";
 
@@ -160,6 +215,8 @@ function renderPackages(packagesToDisplay) {
     packagesGrid.innerHTML = `<p style="text-align:center;">No packages found.</p>`;
     return;
   }
+
+  const ownerWhatsApp = "821996489"; // Replace with your WhatsApp number including country code
 
   packagesToDisplay.forEach((pkg) => {
     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
@@ -180,7 +237,9 @@ function renderPackages(packagesToDisplay) {
           <p class="duration">${pkg.duration}</p>
           <div class="action-buttons">
             <button class="book-now-btn">BOOK NOW</button>
-            <button class="callback-btn">REQUEST A CALLBACK</button>
+            <button class="callback-btn" data-wa="${
+              pkg.name
+            }">REQUEST A CALLBACK</button>
           </div>
           <div class="card-footer">
             <div class="price-info">
@@ -200,6 +259,19 @@ function renderPackages(packagesToDisplay) {
     `;
 
     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
+  });
+
+  // Attach click handler for WhatsApp buttons
+  const callbackButtons = document.querySelectorAll(".callback-btn");
+  callbackButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const pkgName = btn.getAttribute("data-wa");
+      const waMessage = encodeURIComponent(
+        `Hi, I would like a callback for the package: ${pkgName}`
+      );
+      const waUrl = `https://wa.me/${ownerWhatsApp}?text=${waMessage}`;
+      window.open(waUrl, "_blank");
+    });
   });
 }
 
