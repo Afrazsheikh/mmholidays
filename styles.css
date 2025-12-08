@@ -183,6 +183,8 @@ body {
   align-items: center;
   justify-content: space-between;
   z-index: 900;
+  justify-content: flex-start; /* align items to left */
+  gap: 10px; /* spacing between buttons */
 }
 
 .sticky-footer.hidden {
@@ -587,3 +589,12 @@ body {
 }
 
 /* STACK END  */
+/* highligher start */
+/* Highlight effect when navigated from link */
+.package-card.highlighted {
+  border: 2px solid #ff4d6d; /* red/blush border */
+  box-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* highlighter end */

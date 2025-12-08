@@ -89,6 +89,70 @@ const itemsPerPage = 6;
 // ---------------- CORE FUNCTIONS ----------------
 
 // Render packages on screen
+// function renderPackages(packagesToDisplay) {
+//   packagesGrid.innerHTML = "";
+
+//   if (packagesToDisplay.length === 0) {
+//     packagesGrid.innerHTML = `<p style="text-align:center;">No packages found.</p>`;
+//     return;
+//   }
+
+//   packagesToDisplay.forEach((pkg) => {
+//     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
+
+//     const cardHTML = `
+//       <div class="package-card ${isSelected ? "selected" : ""}" data-id="${
+//       pkg.id
+//     }">
+//         <img src="images/${pkg.imageUrl}" class="card-image">
+
+//         ${
+//           isSelected
+//             ? '<span class="selection-checkmark"><i class="fas fa-check"></i></span>'
+//             : ""
+//         }
+
+//         <div class="card-content">
+//           <h3>${pkg.name}</h3>
+//           <p class="duration">${pkg.duration}</p>
+
+//           <div class="action-buttons">
+//             <button class="book-now-btn">BOOK NOW</button>
+//             <button class="callback-btn">REQUEST A CALLBACK</button>
+//           </div>
+
+//           <div class="card-footer">
+//             <div class="price-info">
+//               <span class="original-price">$${pkg.price}</span>
+//               <span class="offer-price">$${pkg.offerPrice}</span>
+//               <span class="offer-tag">OFFER!</span>
+//             </div>
+
+//             <button class="selection-toggle-btn ${
+//               isSelected ? "selected" : ""
+//             }" data-action="${isSelected ? "remove" : "add"}">
+//               <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+//               ${isSelected ? "Remove from Selection" : "Add to Selection"}
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     `;
+
+//     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
+//   });
+// }
+// Function to slugify package name (URL safe)
+function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-") // spaces → hyphens
+    .replace(/[^\w\-]+/g, "") // remove non-word chars
+    .replace(/\-\-+/g, "-"); // collapse multiple hyphens
+}
+
 function renderPackages(packagesToDisplay) {
   packagesGrid.innerHTML = "";
 
@@ -99,35 +163,31 @@ function renderPackages(packagesToDisplay) {
 
   packagesToDisplay.forEach((pkg) => {
     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
+    const packageSlug = slugify(pkg.name);
 
     const cardHTML = `
-      <div class="package-card ${isSelected ? "selected" : ""}" data-id="${
-      pkg.id
-    }">
-        <img src="images/${pkg.imageUrl}" class="card-image">
-
+      <div class="package-card ${isSelected ? "selected" : ""}" 
+           data-id="${pkg.id}" 
+           id="${packageSlug}">
+        <img src="images/${pkg.imageUrl}" class="card-image" alt="${pkg.name}">
         ${
           isSelected
             ? '<span class="selection-checkmark"><i class="fas fa-check"></i></span>'
             : ""
         }
-
         <div class="card-content">
           <h3>${pkg.name}</h3>
           <p class="duration">${pkg.duration}</p>
-
           <div class="action-buttons">
             <button class="book-now-btn">BOOK NOW</button>
             <button class="callback-btn">REQUEST A CALLBACK</button>
           </div>
-
           <div class="card-footer">
             <div class="price-info">
               <span class="original-price">$${pkg.price}</span>
               <span class="offer-price">$${pkg.offerPrice}</span>
               <span class="offer-tag">OFFER!</span>
             </div>
-
             <button class="selection-toggle-btn ${
               isSelected ? "selected" : ""
             }" data-action="${isSelected ? "remove" : "add"}">
@@ -357,3 +417,41 @@ if (paginationEl) {
     updateSelectionUI();
   });
 }
+
+// share to whats app
+shareBtnFooter.addEventListener("click", () => {
+  if (selectedPackages.length === 0) return;
+
+  const baseUrl = "https://afrazsheikh.github.io/mmholidays/";
+
+  const packageLinks = selectedPackages.map((pkg) => {
+    const slug = slugify(pkg.name);
+    return `${baseUrl}#${slug} (${pkg.name})`;
+  });
+
+  const message = `Check out these holiday packages:\n${packageLinks.join(
+    "\n"
+  )}`;
+
+  const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, "_blank");
+});
+// Smooth scroll + highlight if URL has hash
+document.addEventListener("DOMContentLoaded", () => {
+  const hash = window.location.hash;
+  if (hash) {
+    const targetCard = document.querySelector(hash);
+    if (targetCard) {
+      // Scroll smoothly
+      targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Add highlight
+      targetCard.classList.add("highlighted");
+
+      // Remove highlight after 3 seconds
+      setTimeout(() => {
+        targetCard.classList.remove("highlighted");
+      }, 3000);
+    }
+  }
+});
