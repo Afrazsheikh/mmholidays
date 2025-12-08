@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MMholidays Package Selection (Mobile)</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="logo">MMholidays</h1>
+      <div class="search-bar">
+        <input
+          type="text"
+          id="packageSearch"
+          placeholder="Search packages..."
+        />
+      </div>
+    </header>
+
+    <main id="packagesGrid" class="packages-grid"></main>
+
+    <!-- Sticky Footer -->
+    <div id="stickySelectionFooter" class="sticky-footer hidden">
+      <div class="selected-items-preview" id="selectedItemsPreview"></div>
+
+      <button id="selectionBtn" class="selected-packages-btn" disabled>
+        <i class="fas fa-hand-pointer"></i>
+        View Selection (<span id="selectionCount">0</span>)
+      </button>
+
+      <button id="shareBtnFooter" class="share-btn-footer" disabled>
+        <i class="fas fa-share-alt"></i> Share
+      </button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="pagination"></div>
+
+    <!-- Selected Stack -->
+    <div id="selectedStack" class="selected-stack hidden"></div>
+
+    <!-- Footer -->
+    <footer class="mm-footer">
+      <div class="footer-top">
+        <h3>MMholidays</h3>
+        <p>Your trusted travel partner for unforgettable journeys.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="#">Packages</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 MMholidays. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- SCRIPT SHOULD ALWAYS BE AT END -->
+    <script src="script.js"></script>
+  </body>
+</html>
