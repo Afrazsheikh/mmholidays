@@ -1,4 +1,25 @@
-// ---------------- MOCK DATA ----------------
+const descFormatted = `
+<h5 style="color:#ff6b6b; font-size:1.4rem;">Mahanakhon Sky Walk (Indoor 74th & Rooftop 78th floor)</h5>
+<p><strong style="color:#1e90ff;">ENTRANCE ONLY TICKET PRICE</strong></p>
+<p><strong style="color:#32cd32;">MORNING TIME // SUNSET TICKET:</strong> <span style="color:#ff4500;">(10.00 TO 15.30 hrs.) // (15.31 - 19.00 hrs.) ฿</span></p>
+
+<ul style="color:#333;">
+  <li>Adult Skywalk SkyVerse: <strong style="color:#ff6347;">1000฿/1200฿</strong></li>
+  <li>Drink Package Daytime: <strong style="color:#ff6347;">1100฿/1300฿</strong> (Redeem 1 Soft drink 74 FL)</li>
+  <li>Above the Clouds Package: <strong style="color:#ff6347;">1250฿/1450฿</strong> (Redeem 1 drink at SkyBeach 78 Fl)</li>
+  <li>Food Package Daytime: <strong style="color:#ff6347;">1200฿/1400฿</strong></li>
+  <li>Junior Skywalk+SkyVerse: <strong style="color:#ff6347;">550฿/550฿</strong></li>
+  <li>Senior Skywalk+SkyVerse: <strong style="color:#ff6347;">550฿/550฿</strong></li>
+  <li>Mahanakhon SkyVerse: <strong style="color:#ff6347;">350฿/350฿</strong></li>
+  <li>Tilt & Thrill Package +SkyVerse: <strong style="color:#ff6347;">1300฿/1500฿</strong></li>
+</ul>
+
+<p><strong style="color:#1e90ff;">REMARK:</strong> <span style="color:#ff8c00;">Junior (Age 3-12) || Senior (Age 60+)</span></p>
+<p style="color:#008080;">SkyVerse-AT 4TH FLOOR</p>
+<p style="color:#ff1493;">Price may change any time please check 1 day before or same day before visit</p>
+<p><strong style="color:#ff0000;">IN CASE OF BAD WEATHER:</strong> <span style="color:#ff4500;">ALL OUTDOOR AREAS MUST BE CLOSED.</span></p>
+`;
+
 const allPackages = [
   {
     id: "1",
@@ -7,6 +28,7 @@ const allPackages = [
     offerPrice: 1800,
     duration: "7 Days / 6 Nights",
     imageUrl: "beach.jpg",
+    desc: descFormatted,
   },
   {
     id: "2",
@@ -15,6 +37,7 @@ const allPackages = [
     offerPrice: 2200,
     duration: "5 Days / 4 Nights",
     imageUrl: "beach.jpg",
+    desc: descFormatted,
   },
   {
     id: "3",
@@ -23,6 +46,19 @@ const allPackages = [
     offerPrice: 3200,
     duration: "10 Days / 9 Nights",
     imageUrl: "beach.jpg",
+    desc: `*MMHOLIDAYS* '+66 875178432' Mahanakhon Sky Walk (Indoor 74th & Rooftop 78th floor ) ENTRANCE ONLY
+TICKET PRICE MORNING TIME // SUNSET TICKET (10.00 TO 15.30 hrs.) // (15.31 - 19.00 hrs.)
+฿ 👉Adult Skywalk SkyVerse 1000฿/1200฿
+👉Drink Package Daytime 1100฿/1300฿ '(Redeem 1 Soft drink 74 FL )'
+👉Above the Clouds Package 1250฿/1450฿ '(Redeem 1 drink at SkyBeach 78 Fl)'
+👉Food Package Daytime 1200฿/1400฿
+👉Junior Skywalk+SkyVerse 550฿/550฿
+👉Senior Skywalk+SkyVerse 550฿/550฿
+👉Mahanakhon SkyVerse 350฿/350฿
+👉Tilt & Thrill Package +SkyVerse 1300฿/1500฿
+REMARK: Junior (Age 3-12) || Senior Age 60+ || SkyVerse-AT 4TH FLOOR
+Price may change any time please check 1 day before or same day before visit
+REMARK: IN CASE OF BAD WEATHER, PLEASE NOTE THAT ALL OUTDOOR AREAS MUST BE CLOSED.`,
   },
   {
     id: "4",
@@ -31,6 +67,7 @@ const allPackages = [
     offerPrice: 1500,
     duration: "3 Days / 2 Nights",
     imageUrl: "beach.jpg",
+    desc: descFormatted,
   },
   {
     id: "5",
@@ -39,6 +76,7 @@ const allPackages = [
     offerPrice: 5000,
     duration: "14 Days / 13 Nights",
     imageUrl: "beach.jpg",
+    desc: descFormatted,
   },
   {
     id: "6",
@@ -47,6 +85,7 @@ const allPackages = [
     offerPrice: 2800,
     duration: "6 Days / 5 Nights",
     imageUrl: "beach.jpg",
+    desc: descFormatted,
   },
   {
     id: "7",
@@ -55,6 +94,19 @@ const allPackages = [
     offerPrice: 3900,
     duration: "8 Days / 7 Nights",
     imageUrl: "beach.jpg",
+    desc: `*MMHOLIDAYS* '+66 875178432' Mahanakhon Sky Walk (Indoor 74th & Rooftop 78th floor ) ENTRANCE ONLY
+TICKET PRICE MORNING TIME // SUNSET TICKET (10.00 TO 15.30 hrs.) // (15.31 - 19.00 hrs.)
+฿ 👉Adult Skywalk SkyVerse 1000฿/1200฿
+👉Drink Package Daytime 1100฿/1300฿ '(Redeem 1 Soft drink 74 FL )'
+👉Above the Clouds Package 1250฿/1450฿ '(Redeem 1 drink at SkyBeach 78 Fl)'
+👉Food Package Daytime 1200฿/1400฿
+👉Junior Skywalk+SkyVerse 550฿/550฿
+👉Senior Skywalk+SkyVerse 550฿/550฿
+👉Mahanakhon SkyVerse 350฿/350฿
+👉Tilt & Thrill Package +SkyVerse 1300฿/1500฿
+REMARK: Junior (Age 3-12) || Senior Age 60+ || SkyVerse-AT 4TH FLOOR
+Price may change any time please check 1 day before or same day before visit
+REMARK: IN CASE OF BAD WEATHER, PLEASE NOTE THAT ALL OUTDOOR AREAS MUST BE CLOSED.`,
   },
   {
     id: "8",
@@ -63,6 +115,19 @@ const allPackages = [
     offerPrice: 1200,
     duration: "4 Days / 3 Nights",
     imageUrl: "beach.jpg",
+    desc: `*MMHOLIDAYS* '+66 875178432' Mahanakhon Sky Walk (Indoor 74th & Rooftop 78th floor ) ENTRANCE ONLY
+TICKET PRICE MORNING TIME // SUNSET TICKET (10.00 TO 15.30 hrs.) // (15.31 - 19.00 hrs.)
+฿ 👉Adult Skywalk SkyVerse 1000฿/1200฿
+👉Drink Package Daytime 1100฿/1300฿ '(Redeem 1 Soft drink 74 FL )'
+👉Above the Clouds Package 1250฿/1450฿ '(Redeem 1 drink at SkyBeach 78 Fl)'
+👉Food Package Daytime 1200฿/1400฿
+👉Junior Skywalk+SkyVerse 550฿/550฿
+👉Senior Skywalk+SkyVerse 550฿/550฿
+👉Mahanakhon SkyVerse 350฿/350฿
+👉Tilt & Thrill Package +SkyVerse 1300฿/1500฿
+REMARK: Junior (Age 3-12) || Senior Age 60+ || SkyVerse-AT 4TH FLOOR
+Price may change any time please check 1 day before or same day before visit
+REMARK: IN CASE OF BAD WEATHER, PLEASE NOTE THAT ALL OUTDOOR AREAS MUST BE CLOSED.`,
   },
 ];
 
@@ -153,61 +218,6 @@ function slugify(text) {
     .replace(/\-\-+/g, "-"); // collapse multiple hyphens
 }
 
-// function renderPackages(packagesToDisplay) {
-//   packagesGrid.innerHTML = "";
-
-//   if (packagesToDisplay.length === 0) {
-//     packagesGrid.innerHTML = `<p style="text-align:center;">No packages found.</p>`;
-//     return;
-//   }
-
-//   const ownerWhatsApp = "8219964869"; // Replace with your WhatsApp number including country code
-
-//   packagesToDisplay.forEach((pkg) => {
-//     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
-//     const packageSlug = slugify(pkg.name);
-//     const waMessage = encodeURIComponent(
-//       `Hi, I would like a callback for the package: ${pkg.name}`
-//     );
-//     const waUrl = `https://wa.me/${ownerWhatsApp}?text=${waMessage}`;
-
-//     const cardHTML = `
-//       <div class="package-card ${isSelected ? "selected" : ""}"
-//            data-id="${pkg.id}"
-//            id="${packageSlug}">
-//         <img src="images/${pkg.imageUrl}" class="card-image" alt="${pkg.name}">
-//         ${
-//           isSelected
-//             ? '<span class="selection-checkmark"><i class="fas fa-check"></i></span>'
-//             : ""
-//         }
-//         <div class="card-content">
-//           <h3>${pkg.name}</h3>
-//           <p class="duration">${pkg.duration}</p>
-//           <div class="action-buttons">
-//             <button class="book-now-btn">BOOK NOW</button>
-//             <a href="${waUrl}" target="_blank" class="callback-btn">REQUEST A CALLBACK</a>
-//           </div>
-//           <div class="card-footer">
-//             <div class="price-info">
-//               <span class="original-price">$${pkg.price}</span>
-//               <span class="offer-price">$${pkg.offerPrice}</span>
-//               <span class="offer-tag">OFFER!</span>
-//             </div>
-//             <button class="selection-toggle-btn ${
-//               isSelected ? "selected" : ""
-//             }" data-action="${isSelected ? "remove" : "add"}">
-//               <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-//               ${isSelected ? "Remove from Selection" : "Add to Selection"}
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     `;
-
-//     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
-//   });
-// }
 function renderPackages(packagesToDisplay) {
   packagesGrid.innerHTML = "";
 
@@ -220,40 +230,50 @@ function renderPackages(packagesToDisplay) {
 
   packagesToDisplay.forEach((pkg) => {
     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
-    const packageSlug = slugify(pkg.name);
 
     const cardHTML = `
-      <div class="package-card ${isSelected ? "selected" : ""}" 
-           data-id="${pkg.id}" 
-           id="${packageSlug}">
-        <img src="images/${pkg.imageUrl}" class="card-image" alt="${pkg.name}">
-        ${
-          isSelected
-            ? '<span class="selection-checkmark"><i class="fas fa-check"></i></span>'
-            : ""
-        }
-        <div class="card-content">
-          <h3>${pkg.name}</h3>
-          <p class="duration">${pkg.duration}</p>
-          <div class="action-buttons">
-            <button class="book-now-btn">BOOK NOW</button>
-            <button class="callback-btn" data-wa="${
-              pkg.name
-            }">REQUEST A CALLBACK</button>
-          </div>
-          <div class="card-footer">
-            <div class="price-info">
-              <span class="original-price">$${pkg.price}</span>
-              <span class="offer-price">$${pkg.offerPrice}</span>
-              <span class="offer-tag">OFFER!</span>
+      <div class="package-card-container ${isSelected ? "selected" : ""}">
+        <div class="flip-card-inner">
+          <!-- FRONT -->
+          <div class="package-card-front">
+            <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+            <img src="images/${pkg.imageUrl}" class="card-image" alt="${
+      pkg.name
+    }">
+            <div class="card-content">
+              <h3>${pkg.name}</h3>
+              <p class="duration">${pkg.duration}</p>
+              <div class="action-buttons">
+                <button class="book-now-btn">BOOK NOW</button>
+                <button class="callback-btn" data-wa="${
+                  pkg.name
+                }">REQUEST A CALLBACK</button>
+              </div>
+              <div class="card-footer">
+                <div class="price-info">
+                  <span class="original-price">$${pkg.price}</span>
+                  <span class="offer-price">$${pkg.offerPrice}</span>
+                  <span class="offer-tag">OFFER!</span>
+                </div>
+                <button class="selection-toggle-btn ${
+                  isSelected ? "selected" : ""
+                }" data-action="${isSelected ? "remove" : "add"}">
+                  <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+                  ${isSelected ? "Remove from Selection" : "Add to Selection"}
+                </button>
+              </div>
             </div>
-            <button class="selection-toggle-btn ${
-              isSelected ? "selected" : ""
-            }" data-action="${isSelected ? "remove" : "add"}">
-              <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-              ${isSelected ? "Remove from Selection" : "Add to Selection"}
-            </button>
           </div>
+
+          <!-- BACK -->
+          <div class="package-card-back">
+  <h4>Package Details</h4>
+  <div class="package-desc">
+    ${pkg.desc ? formatDescription(pkg.desc) : "No description available."}
+  </div>
+  <button class="flip-back-btn">Back</button>
+</div>
+
         </div>
       </div>
     `;
@@ -261,9 +281,8 @@ function renderPackages(packagesToDisplay) {
     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
   });
 
-  // Attach click handler for WhatsApp buttons
-  const callbackButtons = document.querySelectorAll(".callback-btn");
-  callbackButtons.forEach((btn) => {
+  // WhatsApp callback handler
+  document.querySelectorAll(".callback-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const pkgName = btn.getAttribute("data-wa");
       const waMessage = encodeURIComponent(
@@ -271,6 +290,33 @@ function renderPackages(packagesToDisplay) {
       );
       const waUrl = `https://wa.me/${ownerWhatsApp}?text=${waMessage}`;
       window.open(waUrl, "_blank");
+    });
+  });
+
+  function formatDescription(desc) {
+    // Split by sentences or custom delimiter
+    const sentences = desc
+      .split(". ")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    return sentences.map((s) => `<p>${s}.</p>`).join("");
+  }
+
+  // Info button click -> flip card
+  document.querySelectorAll(".info-icon").forEach((icon) => {
+    icon.addEventListener("click", () => {
+      const cardContainer = icon.closest(".package-card-container");
+      cardContainer.querySelector(".flip-card-inner").classList.add("flipped");
+    });
+  });
+
+  // Back button click -> flip back
+  document.querySelectorAll(".flip-back-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cardContainer = btn.closest(".package-card-container");
+      cardContainer
+        .querySelector(".flip-card-inner")
+        .classList.remove("flipped");
     });
   });
 }
