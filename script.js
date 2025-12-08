@@ -151,11 +151,8 @@ function renderFooterPreview() {
     selectedItemsPreview.insertAdjacentHTML(
       "beforeend",
       `
-      <div class="preview-item">
-        ${pkg.name
-          .split(" ")
-          .map((w) => w[0])
-          .join("")}
+      <div class="preview-item" data-id="${pkg.id}">
+        <img src="images/${pkg.imageUrl}" alt="${pkg.name}" class="preview-img">
         <span class="remove-icon" data-id="${pkg.id}">&times;</span>
       </div>
       `
@@ -180,6 +177,7 @@ function updateSelectionUI() {
   renderFooterPreview();
 
   // ---- STACK ----
+  // ---- STACK ----
   selectedStack.innerHTML = "";
   if (count === 0) {
     selectedStack.classList.add("hidden");
@@ -187,18 +185,29 @@ function updateSelectionUI() {
     selectedStack.classList.remove("hidden");
 
     selectedPackages.forEach((pkg) => {
-      const initials = pkg.name
-        .split(" ")
-        .map((w) => w[0])
-        .join("");
-
       selectedStack.insertAdjacentHTML(
         "beforeend",
-        `<div class="stack-item" data-id="${pkg.id}">${initials}</div>`
+        `
+      <div class="stack-card" data-id="${pkg.id}">
+        <img src="images/${pkg.imageUrl}" alt="${pkg.name}" class="stack-card-img">
+        <div class="stack-card-info">
+          <p class="stack-card-name">${pkg.name}</p>
+          <p class="stack-card-duration">${pkg.duration}</p>
+        </div>
+        <span class="stack-card-remove" data-id="${pkg.id}">&times;</span>
+      </div>
+      `
       );
     });
   }
 }
+
+selectedStack.addEventListener("click", (event) => {
+  const removeBtn = event.target.closest(".stack-card-remove");
+  if (!removeBtn) return;
+
+  togglePackageSelection(removeBtn.dataset.id);
+});
 
 // Popup list rendering
 function renderPopupList() {
