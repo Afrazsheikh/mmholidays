@@ -1,54 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Admin Panel - Update Packages</title>
+    <title>Admin Panel - Manage Packages</title>
     <style>
       body {
         font-family: Arial;
         padding: 20px;
-        background: #f5f5f5;
+        background: #f2f2f2;
       }
       .card {
         background: #fff;
         padding: 20px;
         border-radius: 10px;
-        width: 600px;
+        width: 700px;
         margin: auto;
-        box-shadow: 0 0 10px #ccc;
+        box-shadow: 0 0 10px #bbb;
       }
       input,
-      textarea {
+      textarea,
+      select {
         width: 100%;
         padding: 10px;
         margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 6px;
       }
       button {
-        padding: 12px 20px;
+        padding: 12px;
+        width: 100%;
         background: #007bff;
-        color: #fff;
+        color: white;
         border: none;
         border-radius: 6px;
         cursor: pointer;
+        font-size: 16px;
       }
       button:hover {
         background: #0056d2;
+      }
+      label {
+        font-weight: bold;
       }
     </style>
   </head>
   <body>
     <div class="card">
-      <h2>Admin Panel – Update Package</h2>
+      <h2>Admin Panel – Manage Packages</h2>
 
       <label>GitHub Token:</label>
       <input type="password" id="token" placeholder="Enter GitHub Token" />
 
-      <label>Title:</label>
-      <input type="text" id="title" />
+      <label>Select Package:</label>
+      <select id="packageSelect" onchange="loadSelectedPackage()"></select>
+
+      <button onclick="addNewPackage()">➕ Add New Package</button>
+
+      <label>Package Name:</label>
+      <input type="text" id="name" />
+
+      <label>Price:</label>
+      <input type="number" id="price" />
+
+      <label>Offer Price:</label>
+      <input type="number" id="offerPrice" />
+
+      <label>Duration:</label>
+      <input type="text" id="duration" />
 
       <label>Description (HTML):</label>
-      <textarea id="desc" rows="10"></textarea>
+      <textarea id="desc" rows="12"></textarea>
 
-      <button onclick="saveJSON()">Save Changes</button>
+      <button onclick="saveJSON()">💾 Save Changes</button>
 
       <p id="output" style="color: green; font-weight: bold"></p>
     </div>
@@ -58,38 +80,93 @@
       const repoName = "mmholidays";
       const filePath = "packages.json";
 
-      // Load JSON from GitHub
+      let allPackages = [];
+      let selectedIndex = 0;
+
+      // Load packages.json from GitHub
       async function loadData() {
         const res = await fetch(
           `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${filePath}`
         );
         const data = await res.json();
 
-        document.getElementById("title").value = data.packages[0].title;
-        document.getElementById("desc").value = data.packages[0].descFormatted;
+        allPackages = data.packages;
+
+        const select = document.getElementById("packageSelect");
+        select.innerHTML = "";
+
+        allPackages.forEach((pkg, index) => {
+          const opt = document.createElement("option");
+          opt.value = index;
+          opt.textContent = pkg.name;
+          select.appendChild(opt);
+        });
+
+        loadSelectedPackage();
       }
-      loadData();
 
-      async function saveJSON() {
-        const token = document.getElementById("token").value;
-        if (!token) return alert("Token required!");
+      // Load selected package into fields
+      function loadSelectedPackage() {
+        selectedIndex = document.getElementById("packageSelect").value;
+        const pkg = allPackages[selectedIndex];
 
-        const newJson = {
-          packages: [
-            {
-              title: document.getElementById("title").value,
-              descFormatted: document.getElementById("desc").value,
-            },
-          ],
+        document.getElementById("name").value = pkg.name;
+        document.getElementById("price").value = pkg.price;
+        document.getElementById("offerPrice").value = pkg.offerPrice;
+        document.getElementById("duration").value = pkg.duration;
+        document.getElementById("desc").value = pkg.desc;
+      }
+
+      // Add new package
+      function addNewPackage() {
+        const newPkg = {
+          id: Date.now().toString(),
+          name: "New Package",
+          price: 0,
+          offerPrice: 0,
+          duration: "",
+          imageUrl: "beach.jpg",
+          desc: "",
         };
 
-        // Get current SHA (required by GitHub)
+        allPackages.push(newPkg);
+        selectedIndex = allPackages.length - 1;
+
+        const select = document.getElementById("packageSelect");
+        const opt = document.createElement("option");
+        opt.value = selectedIndex;
+        opt.textContent = "New Package";
+        select.appendChild(opt);
+
+        select.value = selectedIndex;
+
+        loadSelectedPackage();
+      }
+
+      // Save updated json back to GitHub
+      async function saveJSON() {
+        const token = document.getElementById("token").value;
+        if (!token) return alert("Token is required!");
+
+        const pkg = allPackages[selectedIndex];
+
+        pkg.name = document.getElementById("name").value;
+        pkg.price = Number(document.getElementById("price").value);
+        pkg.offerPrice = Number(document.getElementById("offerPrice").value);
+        pkg.duration = document.getElementById("duration").value;
+        pkg.desc = document.getElementById("desc").value;
+
+        const newJson = { packages: allPackages };
+
         const fileInfo = await fetch(
           `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`
         );
         const fileData = await fileInfo.json();
 
-        // Upload JSON back to GitHub
+        function utf8ToBase64(str) {
+          return btoa(unescape(encodeURIComponent(str)));
+        }
+
         const upload = await fetch(
           `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`,
           {
@@ -99,19 +176,19 @@
               Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
-              message: "Updated package via admin panel",
-              content: btoa(JSON.stringify(newJson, null, 2)),
+              message: "Admin panel update",
+              content: utf8ToBase64(JSON.stringify(newJson, null, 2)),
               sha: fileData.sha,
             }),
           }
         );
 
-        if (upload.ok) {
-          document.getElementById("output").innerText = "Updated successfully!";
-        } else {
-          alert("Failed to update!");
-        }
+        document.getElementById("output").innerText = upload.ok
+          ? "Updated Successfully!"
+          : "Update FAILED!";
       }
+
+      loadData();
     </script>
   </body>
 </html>
