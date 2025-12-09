@@ -219,20 +219,22 @@
         const loader = document.getElementById("loader");
         loader.style.display = "block";
 
+        const path = `images/${file.name}`;
+
+        // Get existing image SHA to replace
+        let sha = null;
+        try {
+          const res = await fetch(
+            `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`
+          );
+          const data = await res.json();
+          if (data.sha) sha = data.sha;
+        } catch (err) {}
+
         return new Promise((resolve) => {
           const reader = new FileReader();
           reader.onload = async function (e) {
             const content = e.target.result.split(",")[1];
-            const path = `images/${file.name}`;
-            let sha = null;
-
-            try {
-              const res = await fetch(
-                `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`
-              );
-              const data = await res.json();
-              if (data.sha) sha = data.sha;
-            } catch (err) {}
 
             const upload = await fetch(
               `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`,
