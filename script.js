@@ -573,3 +573,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+fetch("./packages.json")
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+
+    const pkg = data.packages[0];
+    document.getElementById("desc-box").innerHTML = pkg.descFormatted;
+  });
