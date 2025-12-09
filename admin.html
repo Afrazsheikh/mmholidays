@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Panel - Update Packages</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        width: 600px;
+        margin: auto;
+        box-shadow: 0 0 10px #ccc;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      button {
+        padding: 12px 20px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #0056d2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h2>Admin Panel – Update Package</h2>
+
+      <label>GitHub Token:</label>
+      <input type="password" id="token" placeholder="Enter GitHub Token" />
+
+      <label>Title:</label>
+      <input type="text" id="title" />
+
+      <label>Description (HTML):</label>
+      <textarea id="desc" rows="10"></textarea>
+
+      <button onclick="saveJSON()">Save Changes</button>
+
+      <p id="output" style="color: green; font-weight: bold"></p>
+    </div>
+
+    <script>
+      const repoOwner = "Afrazsheikh";
+      const repoName = "mmholidays";
+      const filePath = "packages.json";
+
+      // Load JSON from GitHub
+      async function loadData() {
+        const res = await fetch(
+          `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${filePath}`
+        );
+        const data = await res.json();
+
+        document.getElementById("title").value = data.packages[0].title;
+        document.getElementById("desc").value = data.packages[0].descFormatted;
+      }
+      loadData();
+
+      async function saveJSON() {
+        const token = document.getElementById("token").value;
+        if (!token) return alert("Token required!");
+
+        const newJson = {
+          packages: [
+            {
+              title: document.getElementById("title").value,
+              descFormatted: document.getElementById("desc").value,
+            },
+          ],
+        };
+
+        // Get current SHA (required by GitHub)
+        const fileInfo = await fetch(
+          `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`
+        );
+        const fileData = await fileInfo.json();
+
+        // Upload JSON back to GitHub
+        const upload = await fetch(
+          `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              message: "Updated package via admin panel",
+              content: btoa(JSON.stringify(newJson, null, 2)),
+              sha: fileData.sha,
+            }),
+          }
+        );
+
+        if (upload.ok) {
+          document.getElementById("output").innerText = "Updated successfully!";
+        } else {
+          alert("Failed to update!");
+        }
+      }
+    </script>
+  </body>
+</html>

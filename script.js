@@ -580,4 +580,5 @@ fetch("./packages.json")
 
     const pkg = data.packages[0];
     document.getElementById("desc-box").innerHTML = pkg.descFormatted;
-  });
+  })
+  .catch((err) => console.error("Error loading JSON:", err));
