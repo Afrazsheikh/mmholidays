@@ -4,7 +4,7 @@
       "id": "1",
       "name": "Goa Beach Bliss",
       "price": 2500,
-      "offerPrice": 1800,
+      "offerPrice": 1899,
       "duration": "7 Days / 6 Nights",
       "imageUrl": "beach.jpg",
       "desc": "<h5 style=\"color:#ff6b6b; font-size:1.4rem;\">Mahanakhon Sky Walk (Indoor 74th & Rooftop 78th floor)</h5>\n<p><strong style=\"color:#1e90ff;\">ENTRANCE ONLY TICKET PRICE</strong></p>\n<p><strong style=\"color:#32cd32;\">MORNING TIME // SUNSET TICKET:</strong> <span style=\"color:#ff4500;\">(10.00 TO 15.30 hrs.) // (15.31 - 19.00 hrs.) ฿</span></p>\n<ul style=\"color:#333;\">\n  <li>Adult Skywalk SkyVerse: <strong style=\"color:#ff6347;\">1000฿/1200฿</strong></li>\n  <li>Drink Package Daytime: <strong style=\"color:#ff6347;\">1100฿/1300฿</strong> (Redeem 1 Soft drink 74 FL)</li>\n  <li>Above the Clouds Package: <strong style=\"color:#ff6347;\">1250฿/1450฿</strong> (Redeem 1 drink at SkyBeach 78 Fl)</li>\n  <li>Food Package Daytime: <strong style=\"color:#ff6347;\">1200฿/1400฿</strong></li>\n  <li>Junior Skywalk+SkyVerse: <strong style=\"color:#ff6347;\">550฿/550฿</strong></li>\n  <li>Senior Skywalk+SkyVerse: <strong style=\"color:#ff6347;\">550฿/550฿</strong></li>\n  <li>Mahanakhon SkyVerse: <strong style=\"color:#ff6347;\">350฿/350฿</strong></li>\n  <li>Tilt & Thrill Package +SkyVerse: <strong style=\"color:#ff6347;\">1300฿/1500฿</strong></li>\n</ul>\n<p><strong style=\"color:#1e90ff;\">REMARK:</strong> <span style=\"color:#ff8c00;\">Junior (Age 3-12) || Senior (Age 60+)</span></p>\n<p style=\"color:#008080;\">SkyVerse-AT 4TH FLOOR</p>\n<p style=\"color:#ff1493;\">Price may change any time please check 1 day before or same day before visit</p>\n<p><strong style=\"color:#ff0000;\">IN CASE OF BAD WEATHER:</strong> <span style=\"color:#ff4500;\">ALL OUTDOOR AREAS MUST BE CLOSED.</span></p>"
@@ -71,6 +71,15 @@
       "duration": "4 Days / 3 Nights",
       "imageUrl": "beach.jpg",
       "desc": "*MMHOLIDAYS* '+66 875178432' Mahanakhon Sky Walk (Indoor 74th & Rooftop 78th floor ) ENTRANCE ONLY\nTICKET PRICE MORNING TIME // SUNSET TICKET (10.00 TO 15.30 hrs.) // (15.31 - 19.00 hrs.)\n฿ 👉Adult Skywalk SkyVerse 1000฿/1200฿\n👉Drink Package Daytime 1100฿/1300฿ '(Redeem 1 Soft drink 74 FL )'\n👉Above the Clouds Package 1250฿/1450฿ '(Redeem 1 drink at SkyBeach 78 Fl)'\n👉Food Package Daytime 1200฿/1400฿\n👉Junior Skywalk+SkyVerse 550฿/550฿\n👉Senior Skywalk+SkyVerse 550฿/550฿\n👉Mahanakhon SkyVerse 350฿/350฿\n👉Tilt & Thrill Package +SkyVerse 1300฿/1500฿\nREMARK: Junior (Age 3-12) || Senior Age 60+ || SkyVerse-AT 4TH FLOOR\nPrice may change any time please check 1 day before or same day before visit\nREMARK: IN CASE OF BAD WEATHER, PLEASE NOTE THAT ALL OUTDOOR AREAS MUST BE CLOSED."
+    },
+    {
+      "id": "1765268479427",
+      "name": "New Package",
+      "price": 6,
+      "offerPrice": 655,
+      "duration": "5",
+      "imageUrl": "beach.jpg",
+      "desc": "gfdgfdgdf"
     }
   ]
 }
