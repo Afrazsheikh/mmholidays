@@ -53,40 +53,49 @@ function renderPackages(packagesToDisplay) {
       }" id="${slugify(pkg.name)}">
         <div class="flip-card-inner">
 
+          <!-- FRONT -->
           <div class="package-card-front">
             <div class="info-icon"><i class="fas fa-info-circle"></i></div>
 
             <img src="images/${pkg.imageUrl}" class="card-image" alt="${
       pkg.name
     }">
+
             <div class="card-content">
               <h3>${pkg.name}</h3>
               <p class="duration">${pkg.duration}</p>
 
               <div class="action-buttons">
-                <button class="book-now-btn">BOOK NOW</button>
+                <!-- Removed BOOK NOW button -->
                 <button class="callback-btn" data-wa="${pkg.name}">
                   REQUEST A CALLBACK
                 </button>
               </div>
+<div class="card-footer">
 
-              <div class="card-footer">
-                <div class="price-info">
-                  <span class="original-price">$${pkg.price}</span>
-                  <span class="offer-price">$${pkg.offerPrice}</span>
-                  <span class="offer-tag">OFFER!</span>
-                </div>
+  <div class="price-info">
+    <span class="original-price">$${pkg.price}</span>
+    <span class="offer-price">$${pkg.offerPrice}</span>
+    ${pkg.sale ? `<span class="sale-tag">${pkg.sale}</span>` : ""}
+  </div>
 
-                <button class="selection-toggle-btn ${
-                  isSelected ? "selected" : ""
-                }" data-id="${pkg.id}">
-                  <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-                  ${isSelected ? "Remove from Selection" : "Add to Selection"}
-                </button>
-              </div>
+  <div class="rating" style="font-size:0.8rem; color:#FFD700; margin:4px 0;">
+    ${renderStars(pkg.rating)} (${pkg.reviews || 0})
+  </div>
+
+  <button class="selection-toggle-btn ${
+    isSelected ? "selected" : ""
+  }" data-id="${pkg.id}">
+    <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+    ${isSelected ? "Remove from Selection" : "Add to Selection"}
+  </button>
+
+</div>
+
             </div>
           </div>
 
+          <!-- BACK -->
           <div class="package-card-back">
             <h4>Package Details</h4>
             <div class="package-desc">${formatDescription(pkg.desc)}</div>
@@ -100,7 +109,7 @@ function renderPackages(packagesToDisplay) {
     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
   });
 
-  // Info button
+  // Info button click -> flip card
   document.querySelectorAll(".info-icon").forEach((icon) => {
     icon.addEventListener("click", () => {
       icon
@@ -110,7 +119,7 @@ function renderPackages(packagesToDisplay) {
     });
   });
 
-  // Back button
+  // Back button click -> flip back
   document.querySelectorAll(".flip-back-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       btn
@@ -136,11 +145,118 @@ function renderPackages(packagesToDisplay) {
   // Selection toggle
   document.querySelectorAll(".selection-toggle-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const pkgId = btn.dataset.id;
-      togglePackageSelection(pkgId);
+      togglePackageSelection(btn.dataset.id);
     });
   });
 }
+
+// function renderPackages(packagesToDisplay) {
+//   packagesGrid.innerHTML = "";
+
+//   if (packagesToDisplay.length === 0) {
+//     packagesGrid.innerHTML = `<p style="text-align:center;">No packages found.</p>`;
+//     return;
+//   }
+
+//   const ownerWhatsApp = "821996489";
+
+//   packagesToDisplay.forEach((pkg) => {
+//     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
+
+//     const cardHTML = `
+//       <div class="package-card-container ${
+//         isSelected ? "selected" : ""
+//       }" id="${slugify(pkg.name)}">
+//         <div class="flip-card-inner">
+
+//           <div class="package-card-front">
+//             <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+
+//             <img src="images/${pkg.imageUrl}" class="card-image" alt="${
+//       pkg.name
+//     }">
+//             <div class="card-content">
+//               <h3>${pkg.name}</h3>
+//               <p class="duration">${pkg.duration}</p>
+
+//               <div class="action-buttons">
+//                 <button class="book-now-btn">BOOK NOW</button>
+//                 <button class="callback-btn" data-wa="${pkg.name}">
+//                   REQUEST A CALLBACK
+//                 </button>
+//               </div>
+
+//               <div class="card-footer">
+//                 <div class="price-info">
+//                   <span class="original-price">$${pkg.price}</span>
+//                   <span class="offer-price">$${pkg.offerPrice}</span>
+//                   <span class="offer-tag">OFFER!</span>
+//                 </div>
+
+//                 <button class="selection-toggle-btn ${
+//                   isSelected ? "selected" : ""
+//                 }" data-id="${pkg.id}">
+//                   <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+//                   ${isSelected ? "Remove from Selection" : "Add to Selection"}
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+
+//           <div class="package-card-back">
+//             <h4>Package Details</h4>
+//             <div class="package-desc">${formatDescription(pkg.desc)}</div>
+//             <button class="flip-back-btn">Back</button>
+//           </div>
+
+//         </div>
+//       </div>
+//     `;
+
+//     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
+//   });
+
+//   // Info button
+//   document.querySelectorAll(".info-icon").forEach((icon) => {
+//     icon.addEventListener("click", () => {
+//       icon
+//         .closest(".package-card-container")
+//         .querySelector(".flip-card-inner")
+//         .classList.add("flipped");
+//     });
+//   });
+
+//   // Back button
+//   document.querySelectorAll(".flip-back-btn").forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       btn
+//         .closest(".package-card-container")
+//         .querySelector(".flip-card-inner")
+//         .classList.remove("flipped");
+//     });
+//   });
+
+//   // WhatsApp callback
+//   document.querySelectorAll(".callback-btn").forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       const pkgName = btn.dataset.wa;
+//       window.open(
+//         `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(
+//           "Hi, I want a callback for " + pkgName
+//         )}`,
+//         "_blank"
+//       );
+//     });
+//   });
+
+//   // Selection toggle
+//   document.querySelectorAll(".selection-toggle-btn").forEach((btn) => {
+//     btn.addEventListener("click", () => {
+//       const pkgId = btn.dataset.id;
+//       togglePackageSelection(pkgId);
+//     });
+//   });
+// }
 
 // ---------------- SEARCH, PAGINATION, SELECTION ----------------
 function getFilteredPackages(term) {
@@ -336,3 +452,15 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Error loading JSON:", err));
 });
+function renderStars(rating) {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
+
+  let html = "";
+  for (let i = 0; i < fullStars; i++) html += '<i class="fas fa-star"></i>';
+  if (halfStar) html += '<i class="fas fa-star-half-alt"></i>';
+  for (let i = 0; i < emptyStars; i++) html += '<i class="far fa-star"></i>';
+
+  return html;
+}

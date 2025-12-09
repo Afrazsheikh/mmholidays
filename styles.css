@@ -691,3 +691,12 @@ body {
 /* back button start */
 
 /* back button end  */
+.sale-tag {
+  background-color: #ff4500; /* bright color for sale */
+  color: #fff;
+  font-size: 0.7rem; /* small text */
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+}
