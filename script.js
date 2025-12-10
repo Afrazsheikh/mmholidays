@@ -196,7 +196,11 @@ function renderPackages(packagesToDisplay) {
           </button>
 
           <div class="card-footer">
-           
+            <div class="price-info">
+              <span class="original-price">$${pkg.price}</span>
+              <span class="offer-price">$${pkg.offerPrice}</span>
+              <span class="offer-tag">OFFER!</span>
+            </div>
 
             <button class="selection-toggle-btn ${
               isSelected ? "selected" : ""
