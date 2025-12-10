@@ -53,7 +53,7 @@ body {
 }
 
 /* --- Package Card --- */
-.package-card {
+/* .package-card {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
@@ -82,6 +82,130 @@ body {
   font-size: 0.9em;
   color: #6c757d;
   margin-bottom: 10px;
+} */
+.package-card {
+  width: 100%;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.card-img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.save-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #e63946;
+  padding: 4px 10px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.duration {
+  color: #777;
+  font-size: 13px;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.rating {
+  color: #2ecc71;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.rating-count {
+  color: #555;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.pkg-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+.location-row {
+  font-size: 13px;
+  color: #555;
+  display: flex;
+  gap: 5px;
+}
+
+.sale-banner {
+  background: red;
+  color: #fff;
+  padding: 4px 10px;
+  width: fit-content;
+  border-radius: 6px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.price-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #666;
+}
+
+.discount-tag {
+  background: #00b894;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: white;
+  font-size: 11px;
+}
+
+.new-price {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #000;
+}
+
+.adult {
+  font-size: 12px;
+  color: #444;
+}
+
+.callback-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: #ff6f00;
+  color: #fff;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
 }
 
 /* Checkmark for Selected State */
@@ -699,4 +823,72 @@ body {
   padding: 2px 6px;
   border-radius: 4px;
   margin-left: 6px;
+}
+/* tool tips */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+
+  /* Position to LEFT SIDE */
+  right: 120%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  z-index: 50;
+}
+
+/* Tooltip arrow pointing left */
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.85);
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* tool tip end */
+/* Make image container relative for absolute positioning */
+.card-img-container {
+  position: relative; /* So icon can be positioned relative to image */
+  width: 100%;
+}
+
+/* Info icon over image top-right */
+.card-img-container .info-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.3rem;
+  color: #333;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Tooltip text already exists */
+.card-img-container .tooltip .tooltip-text {
+  right: 120%; /* keeps tooltip to the left of icon */
+  top: 50%;
+  transform: translateY(-50%);
 }

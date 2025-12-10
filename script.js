@@ -47,69 +47,146 @@ function renderPackages(packagesToDisplay) {
   packagesToDisplay.forEach((pkg) => {
     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
 
+    //     const cardHTML = `
+    //       <div class="package-card-container ${
+    //         isSelected ? "selected" : ""
+    //       }" id="${slugify(pkg.name)}">
+    //         <div class="flip-card-inner">
+
+    //           <!-- FRONT -->
+    //           <div class="package-card-front">
+    //           <div class="info-icon tooltip">
+    //   <i class="fas fa-info-circle"></i>
+    //   <span class="tooltip-text">Click for package info</span>
+    // </div>
+
+    //             <img src="images/${pkg.imageUrl}" class="card-image" alt="${
+    //       pkg.name
+    //     }">
+
+    //             <div class="card-content">
+    //               <h3>${pkg.name}</h3>
+    //               <p class="duration">${pkg.duration}</p>
+
+    //               <div class="action-buttons">
+    //                 <!-- Removed BOOK NOW button -->
+    //                 <button class="callback-btn" data-wa="${pkg.name}">
+    //                   REQUEST A CALLBACK
+    //                 </button>
+    //               </div>
+    // <div class="card-footer">
+
+    //   <div class="price-info">
+    //     <span class="original-price">$${pkg.price}</span>
+    //     <span class="offer-price">$${pkg.offerPrice}</span>
+    //     ${pkg.sale ? `<span class="sale-tag">${pkg.sale}</span>` : ""}
+    //   </div>
+
+    //   <button class="selection-toggle-btn ${
+    //     isSelected ? "selected" : ""
+    //   }" data-id="${pkg.id}">
+    //     <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+    //     ${isSelected ? "Remove from Selection" : "Add to Selection"}
+    //   </button>
+
+    // </div>
+
+    //             </div>
+    //           </div>
+
+    //           <!-- BACK -->
+    //           <div class="package-card-back">
+    //             <h4>Package Details</h4>
+    //             <div class="package-desc">${formatDescription(pkg.desc)}</div>
+    //             <button class="flip-back-btn">Back</button>
+    //           </div>
+
+    //         </div>
+    //       </div>
+    //     `;
     const cardHTML = `
-      <div class="package-card-container ${
-        isSelected ? "selected" : ""
-      }" id="${slugify(pkg.name)}">
-        <div class="flip-card-inner">
+  <div class="package-card-container">
 
-          <!-- FRONT -->
-          <div class="package-card-front">
-            <div class="info-icon"><i class="fas fa-info-circle"></i></div>
+    <div class="flip-card-inner">
 
-            <img src="images/${pkg.imageUrl}" class="card-image" alt="${
-      pkg.name
-    }">
+      <!-- Front Side -->
+      <div class="package-card package-card-front">
+        <div class="save-tag">
+          SAVE INR ${pkg.price - pkg.offerPrice}
+        </div>
 
-            <div class="card-content">
-              <h3>${pkg.name}</h3>
-              <p class="duration">${pkg.duration}</p>
+        <div class="card-img-container">
+          <img src="images/${pkg.imageUrl}" class="card-img" alt="${pkg.name}">
+          <div class="info-icon tooltip">
+            <i class="fas fa-info-circle"></i>
+            <span class="tooltip-text">Click for package info</span>
+          </div>
+        </div>
 
-              <div class="action-buttons">
-                <!-- Removed BOOK NOW button -->
-                <button class="callback-btn" data-wa="${pkg.name}">
-                  REQUEST A CALLBACK
-                </button>
-              </div>
-<div class="card-footer">
+        <div class="card-body">
+          <p class="duration">${pkg.duration}</p>
 
-  <div class="price-info">
-    <span class="original-price">$${pkg.price}</span>
-    <span class="offer-price">$${pkg.offerPrice}</span>
-    ${pkg.sale ? `<span class="sale-tag">${pkg.sale}</span>` : ""}
-  </div>
+          <div class="rating-row">
+            <span class="rating">⭐ ${pkg.rating}</span>
+            <span class="rating-count">(${pkg.ratingCount})</span>
+          </div>
 
-  <div class="rating" style="font-size:0.8rem; color:#FFD700; margin:4px 0;">
-    ${renderStars(pkg.rating)} (${pkg.reviews || 0})
-  </div>
+          <h3 class="pkg-title">${pkg.name}</h3>
 
-  <button class="selection-toggle-btn ${
-    isSelected ? "selected" : ""
-  }" data-id="${pkg.id}">
-    <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-    ${isSelected ? "Remove from Selection" : "Add to Selection"}
-  </button>
+          <div class="location-row">
+            <span>${pkg.location1}</span> • 
+            <span>${pkg.location2}</span>
+          </div>
 
-</div>
+          ${pkg.sale ? `<div class="sale-banner">${pkg.sale}</div>` : ""}
 
+          <div class="price-row">
+            <span class="old-price">INR ${pkg.price.toLocaleString()}</span>
+            <span class="discount-tag">SAVE INR ${(
+              pkg.price - pkg.offerPrice
+            ).toLocaleString()}</span>
+          </div>
+
+          <div class="new-price">
+            INR ${pkg.offerPrice.toLocaleString()} <span class="adult">/Adult</span>
+          </div>
+
+          <button class="callback-btn" data-wa="${pkg.name}">
+            Request Callback
+          </button>
+
+          <div class="card-footer">
+            <div class="price-info">
+              <span class="original-price">$${pkg.price}</span>
+              <span class="offer-price">$${pkg.offerPrice}</span>
+              <span class="offer-tag">OFFER!</span>
             </div>
-          </div>
 
-          <!-- BACK -->
-          <div class="package-card-back">
-            <h4>Package Details</h4>
-            <div class="package-desc">${formatDescription(pkg.desc)}</div>
-            <button class="flip-back-btn">Back</button>
+            <button class="selection-toggle-btn ${
+              isSelected ? "selected" : ""
+            }" data-id="${pkg.id}">
+              <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+              ${isSelected ? "Remove from Selection" : "Add to Selection"}
+            </button>
           </div>
-
         </div>
       </div>
-    `;
+
+      <!-- Back Side -->
+      <div class="package-card package-card-back">
+        <div class="package-desc">
+          <p>${pkg.desc || "Package details will appear here."}</p>
+        </div>
+        <button class="flip-back-btn">Back</button>
+      </div>
+
+    </div>
+  </div>
+`;
 
     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
   });
 
-  // Info button click -> flip card
   document.querySelectorAll(".info-icon").forEach((icon) => {
     icon.addEventListener("click", () => {
       icon
@@ -119,7 +196,6 @@ function renderPackages(packagesToDisplay) {
     });
   });
 
-  // Back button click -> flip back
   document.querySelectorAll(".flip-back-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       btn
@@ -149,114 +225,6 @@ function renderPackages(packagesToDisplay) {
     });
   });
 }
-
-// function renderPackages(packagesToDisplay) {
-//   packagesGrid.innerHTML = "";
-
-//   if (packagesToDisplay.length === 0) {
-//     packagesGrid.innerHTML = `<p style="text-align:center;">No packages found.</p>`;
-//     return;
-//   }
-
-//   const ownerWhatsApp = "821996489";
-
-//   packagesToDisplay.forEach((pkg) => {
-//     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
-
-//     const cardHTML = `
-//       <div class="package-card-container ${
-//         isSelected ? "selected" : ""
-//       }" id="${slugify(pkg.name)}">
-//         <div class="flip-card-inner">
-
-//           <div class="package-card-front">
-//             <div class="info-icon"><i class="fas fa-info-circle"></i></div>
-
-//             <img src="images/${pkg.imageUrl}" class="card-image" alt="${
-//       pkg.name
-//     }">
-//             <div class="card-content">
-//               <h3>${pkg.name}</h3>
-//               <p class="duration">${pkg.duration}</p>
-
-//               <div class="action-buttons">
-//                 <button class="book-now-btn">BOOK NOW</button>
-//                 <button class="callback-btn" data-wa="${pkg.name}">
-//                   REQUEST A CALLBACK
-//                 </button>
-//               </div>
-
-//               <div class="card-footer">
-//                 <div class="price-info">
-//                   <span class="original-price">$${pkg.price}</span>
-//                   <span class="offer-price">$${pkg.offerPrice}</span>
-//                   <span class="offer-tag">OFFER!</span>
-//                 </div>
-
-//                 <button class="selection-toggle-btn ${
-//                   isSelected ? "selected" : ""
-//                 }" data-id="${pkg.id}">
-//                   <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-//                   ${isSelected ? "Remove from Selection" : "Add to Selection"}
-//                 </button>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div class="package-card-back">
-//             <h4>Package Details</h4>
-//             <div class="package-desc">${formatDescription(pkg.desc)}</div>
-//             <button class="flip-back-btn">Back</button>
-//           </div>
-
-//         </div>
-//       </div>
-//     `;
-
-//     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
-//   });
-
-//   // Info button
-//   document.querySelectorAll(".info-icon").forEach((icon) => {
-//     icon.addEventListener("click", () => {
-//       icon
-//         .closest(".package-card-container")
-//         .querySelector(".flip-card-inner")
-//         .classList.add("flipped");
-//     });
-//   });
-
-//   // Back button
-//   document.querySelectorAll(".flip-back-btn").forEach((btn) => {
-//     btn.addEventListener("click", () => {
-//       btn
-//         .closest(".package-card-container")
-//         .querySelector(".flip-card-inner")
-//         .classList.remove("flipped");
-//     });
-//   });
-
-//   // WhatsApp callback
-//   document.querySelectorAll(".callback-btn").forEach((btn) => {
-//     btn.addEventListener("click", () => {
-//       const pkgName = btn.dataset.wa;
-//       window.open(
-//         `https://wa.me/${ownerWhatsApp}?text=${encodeURIComponent(
-//           "Hi, I want a callback for " + pkgName
-//         )}`,
-//         "_blank"
-//       );
-//     });
-//   });
-
-//   // Selection toggle
-//   document.querySelectorAll(".selection-toggle-btn").forEach((btn) => {
-//     btn.addEventListener("click", () => {
-//       const pkgId = btn.dataset.id;
-//       togglePackageSelection(pkgId);
-//     });
-//   });
-// }
 
 // ---------------- SEARCH, PAGINATION, SELECTION ----------------
 function getFilteredPackages(term) {
@@ -464,3 +432,61 @@ function renderStars(rating) {
 
   return html;
 }
+// function autoShowTooltips() {
+//   let showIndex = 0;
+
+//   setInterval(() => {
+//     // Re-scan tooltips every cycle (because packages re-render)
+//     const tooltips = document.querySelectorAll(".tooltip .tooltip-text");
+//     if (tooltips.length === 0) return;
+
+//     // Hide all tooltips first
+//     tooltips.forEach((t) => {
+//       t.style.visibility = "hidden";
+//       t.style.opacity = "0";
+//     });
+
+//     // Show next tooltip
+//     const tooltip = tooltips[showIndex];
+//     tooltip.style.visibility = "visible";
+//     tooltip.style.opacity = "1";
+
+//     // Hide after 2 seconds
+//     setTimeout(() => {
+//       tooltip.style.visibility = "hidden";
+//       tooltip.style.opacity = "0";
+//     }, 2000);
+
+//     // Move to next tooltip index
+//     showIndex = (showIndex + 1) % tooltips.length;
+//   }, 5000); // repeat every 5 seconds
+// }
+
+// // run AFTER your initial render
+// document.addEventListener("DOMContentLoaded", () => {
+//   autoShowTooltips();
+// });
+function autoShowTooltips() {
+  setInterval(() => {
+    // Get fresh tooltips every cycle (because cards re-render)
+    const tooltips = document.querySelectorAll(".tooltip .tooltip-text");
+    if (tooltips.length === 0) return;
+
+    // Show all tooltips
+    tooltips.forEach((t) => {
+      t.style.visibility = "visible";
+      t.style.opacity = "1";
+    });
+
+    // Hide after 2 seconds
+    setTimeout(() => {
+      tooltips.forEach((t) => {
+        t.style.visibility = "hidden";
+        t.style.opacity = "0";
+      });
+    }, 2000);
+  }, 5000); // every 5 seconds
+}
+document.addEventListener("DOMContentLoaded", () => {
+  autoShowTooltips();
+});
