@@ -13,6 +13,9 @@ const selectedStack = document.getElementById("selectedStack");
 const selectedPopup = document.getElementById("selectedPopup");
 const popupList = document.getElementById("popupList");
 const closePopup = document.getElementById("closePopup");
+const searchInput = document.getElementById("packageSearch");
+const searchResults = document.getElementById("searchResults");
+const packages = document.querySelectorAll(".package-card-container");
 
 let currentPage = 1;
 const itemsPerPage = 6;
@@ -105,18 +108,19 @@ function renderPackages(packagesToDisplay) {
     //       </div>
     //     `;
     const cardHTML = `
-  <div class="package-card-container">
+  <div class="package-card-container ">
 
     <div class="flip-card-inner">
 
       <!-- Front Side -->
       <div class="package-card package-card-front">
-        <div class="save-tag">
-          SAVE INR ${pkg.price - pkg.offerPrice}
-        </div>
+      
 
         <div class="card-img-container">
           <img src="images/${pkg.imageUrl}" class="card-img" alt="${pkg.name}">
+            <div class="save-tag">
+    SAVE INR ${pkg.price - pkg.offerPrice}
+  </div>
           <div class="info-icon tooltip">
             <i class="fas fa-info-circle"></i>
             <span class="tooltip-text">Click for package info</span>
@@ -489,4 +493,46 @@ function autoShowTooltips() {
 }
 document.addEventListener("DOMContentLoaded", () => {
   autoShowTooltips();
+});
+// Listen for typing
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = "";
+
+  if (!query) {
+    searchResults.style.display = "none";
+    return;
+  }
+
+  const matchedPackages = Array.from(packages).filter((pkg) =>
+    pkg.dataset.name.includes(query)
+  );
+
+  matchedPackages.forEach((pkg) => {
+    const li = document.createElement("li");
+    li.textContent = pkg.dataset.name;
+    li.addEventListener("click", () => {
+      // Scroll to the package card
+      pkg.scrollIntoView({ behavior: "smooth", block: "start" });
+
+      // Optional: highlight the card
+      pkg.classList.add("highlighted");
+      setTimeout(() => pkg.classList.remove("highlighted"), 2000);
+
+      // Clear search
+      searchInput.value = "";
+      searchResults.innerHTML = "";
+      searchResults.style.display = "none";
+    });
+    searchResults.appendChild(li);
+  });
+
+  searchResults.style.display = matchedPackages.length ? "block" : "none";
+});
+
+// Hide dropdown when clicking outside
+document.addEventListener("click", (e) => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput) {
+    searchResults.style.display = "none";
+  }
 });

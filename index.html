@@ -19,7 +19,9 @@
           type="text"
           id="packageSearch"
           placeholder="Search packages..."
+          autocomplete="off"
         />
+        <ul id="searchResults" class="search-results"></ul>
       </div>
     </header>
 
@@ -44,11 +46,6 @@
 
     <!-- Selected Stack -->
     <div id="selectedStack" class="selected-stack hidden"></div>
-
-    <i class="info-icon tooltip">
-      ℹ️
-      <span class="tooltip-text">Click for package info</span>
-    </i>
 
     <!-- Footer -->
     <footer class="mm-footer">
