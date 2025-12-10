@@ -144,19 +144,18 @@ function renderPackages(packagesToDisplay) {
     //       </div>
     //     `;
     const cardHTML = `
-  <div class="package-card-container ">
+  <div class="package-card-container">
 
     <div class="flip-card-inner">
 
       <!-- Front Side -->
       <div class="package-card package-card-front">
       
-
         <div class="card-img-container">
           <img src="images/${pkg.imageUrl}" class="card-img" alt="${pkg.name}">
-            <div class="save-tag">
-    SAVE INR ${pkg.price - pkg.offerPrice}
-  </div>
+          <div class="save-tag">
+            SAVE INR ${pkg.price - pkg.offerPrice}
+          </div>
           <div class="info-icon tooltip">
             <i class="fas fa-info-circle"></i>
             <span class="tooltip-text">Click for package info</span>
@@ -191,24 +190,34 @@ function renderPackages(packagesToDisplay) {
             INR ${pkg.offerPrice.toLocaleString()} <span class="adult">/Adult</span>
           </div>
 
-          <button class="callback-btn" data-wa="${pkg.name}">
-            Request Callback
-          </button>
+          <!-- Add to Selection small interactive link -->
+        
+<div class="action-buttons" style="display:flex; gap:10px; margin-top:10px; align-items:center;">
 
-          <div class="card-footer">
-            <div class="price-info">
-              <span class="original-price">$${pkg.price}</span>
-              <span class="offer-price">$${pkg.offerPrice}</span>
-              <span class="offer-tag">OFFER!</span>
-            </div>
+  <!-- Add to Selection button on left (20%) -->
+ <div class="add-to-selection" style="flex: 0 0 20%;">
+  <button class="selection-toggle-btn ${
+    isSelected ? "selected" : ""
+  }" data-id="${
+      pkg.id
+    }" style="width:100%; font-size:0.85em; padding:11px 5px; height:45px;">
+    <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+    ${isSelected ? "Remove" : " Add"}
+  </button>
+</div>
 
-            <button class="selection-toggle-btn ${
-              isSelected ? "selected" : ""
-            }" data-id="${pkg.id}">
-              <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-              ${isSelected ? "Remove from Selection" : "Add to Selection"}
-            </button>
-          </div>
+
+  <!-- Request Callback button on right (80%) -->
+  <div style="flex: 0 0 80%;">
+    <button class="callback-btn" data-wa="${
+      pkg.name
+    }" style="width:100%; padding:8px 10px; font-size:0.85em;">
+      Request Callback
+    </button>
+  </div>
+
+</div>
+
         </div>
       </div>
 
