@@ -10,47 +10,94 @@ body {
   background-color: #f4f7f6;
   padding-bottom: 70px; /* Space for the sticky footer */
 }
+/* serach bar */
+/* Center the search container on the page */
+.search-container {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  margin: 50px 0; /* space from top */
+}
+.search-bar {
+  position: relative;
+  width: 100%; /* Full width on small screens */
+  max-width: 400px; /* Limit width on mobile */
+}
+/* serach bar end */
 
-/* --- Header Section (Mobile First) --- */
+/* --- HEADER & SEARCH BAR --- */
 .header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* stack logo and search on mobile */
   align-items: center;
   padding: 15px 10px;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 100;
 }
 
 .logo {
   color: #007bff;
   font-size: 1.5em;
-}
-/* Dropdown below search input */
-.search-bar {
-  position: relative; /* make dropdown absolute inside it */
+  font-weight: bold;
+  margin-bottom: 15px; /* space below logo on mobile */
 }
 
+/* Search container centered */
+.search-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px; /* smooth rounded corners */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 18px;
+  pointer-events: none;
+}
+
+/* --- Search Results Dropdown --- */
 .search-results {
   list-style: none;
   margin: 0;
   padding: 0;
   background: white;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
   max-height: 200px;
   overflow-y: auto;
   position: absolute;
-  top: 100%; /* directly below the input */
+  top: 100%;
   left: 0;
   width: 100%;
-  z-index: 100;
-  display: none; /* hide initially */
+  display: none;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 50;
 }
 
 .search-results li {
-  padding: 8px 10px;
+  padding: 8px 12px;
   cursor: pointer;
   font-size: 14px;
 }
@@ -59,19 +106,50 @@ body {
   background-color: #f0f0f0;
 }
 
-.search-bar {
-  order: 3;
-  width: 100%;
-  margin-top: 10px;
+/* --- MEDIA QUERIES --- */
+@media (min-width: 768px) {
+  /* Header horizontal on desktop */
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+
+  .search-container {
+    justify-content: center;
+    flex: 1; /* take space between logo and right content */
+  }
+
+  .search-bar {
+    width: 350px;
+  }
+
+  .search-bar input {
+    font-size: 16px;
+  }
+
+  .search-bar .search-icon {
+    font-size: 20px;
+  }
 }
 
-.search-bar input {
-  padding: 10px;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
+@media (min-width: 1200px) {
+  .search-bar {
+    width: 400px;
+  }
+
+  .search-bar input {
+    font-size: 18px;
+  }
+
+  .search-bar .search-icon {
+    font-size: 22px;
+  }
 }
 
 /* --- Packages Grid (Mobile First: Single Column) --- */
@@ -276,9 +354,11 @@ body {
   border: none;
 }
 .callback-btn {
-  background-color: transparent;
-  color: #ffc107;
+  /* background-color: transparent; */
+  color: #f5f5f4;
+  font-size: 12px;
   border: 1px solid #ffc107;
+  font-weight: bold;
 }
 
 /* Price Info and Selection Button (Stacked on Mobile) */
@@ -489,7 +569,27 @@ body {
 }
 
 /* --- MEDIA QUERIES (Desktop Adjustments) --- */
+@media (min-width: 1200px) {
+  .search-bar {
+    width: 400px; /* max width on large screens */
+  }
+  .search-bar input {
+    font-size: 18px;
+  }
+  .search-bar .search-icon {
+    font-size: 22px;
+  }
+}
 @media (min-width: 768px) {
+  .search-bar {
+    width: 350px; /* desktop size */
+  }
+  .search-bar input {
+    font-size: 16px;
+  }
+  .search-bar .search-icon {
+    font-size: 20px; /* scale icon slightly bigger */
+  }
   body {
     padding-bottom: 0; /* No space for sticky footer on desktop */
   }
@@ -501,6 +601,15 @@ body {
     order: 2;
     width: 300px;
     margin-top: 0;
+  }
+  .search-bar .search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 18px;
+    pointer-events: none;
   }
   .packages-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -529,6 +638,12 @@ body {
     content: "";
     display: inline-block;
     width: 150px; /* Placeholder to keep desktop header structure similar */
+  }
+}
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+  .search-bar {
+    width: 300px; /* narrower on small tablets */
   }
 }
 

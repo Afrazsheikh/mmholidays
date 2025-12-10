@@ -19,7 +19,43 @@ const packages = document.querySelectorAll(".package-card-container");
 
 let currentPage = 1;
 const itemsPerPage = 6;
+// Array of placeholder suggestions
+const placeholderSuggestions = [
+  "Bali",
+  "Paris",
+  "Goa",
+  "Maldives",
+  "Dubai",
+  "Thailand",
+  "London",
+];
 
+let currentIndex = 0;
+let charIndex = 0;
+let typingSpeed = 150; // ms per character
+let pauseTime = 1000; // time to pause after full word
+
+function typePlaceholder() {
+  const currentWord = placeholderSuggestions[currentIndex];
+  if (charIndex <= currentWord.length) {
+    searchInput.setAttribute(
+      "placeholder",
+      `Search for ${currentWord.substring(0, charIndex)}`
+    );
+    charIndex++;
+    setTimeout(typePlaceholder, typingSpeed);
+  } else {
+    // pause before deleting
+    setTimeout(() => {
+      charIndex = 0;
+      currentIndex = (currentIndex + 1) % placeholderSuggestions.length;
+      typePlaceholder();
+    }, pauseTime);
+  }
+}
+
+// Start the typing animation
+typePlaceholder();
 // ---------------- HELPERS ----------------
 function slugify(text) {
   return text
@@ -45,7 +81,7 @@ function renderPackages(packagesToDisplay) {
     return;
   }
 
-  const ownerWhatsApp = "821996489";
+  const ownerWhatsApp = " +91821996489";
 
   packagesToDisplay.forEach((pkg) => {
     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
@@ -160,11 +196,7 @@ function renderPackages(packagesToDisplay) {
           </button>
 
           <div class="card-footer">
-            <div class="price-info">
-              <span class="original-price">$${pkg.price}</span>
-              <span class="offer-price">$${pkg.offerPrice}</span>
-              <span class="offer-tag">OFFER!</span>
-            </div>
+           
 
             <button class="selection-toggle-btn ${
               isSelected ? "selected" : ""
