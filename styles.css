@@ -1039,3 +1039,114 @@ body {
   top: 50%;
   transform: translateY(-50%);
 }
+/* TICKER SECTION */
+.trending-ticker {
+  background: #fff7e6;
+  border-left: 4px solid #ff9800;
+  padding: 10px 0;
+  margin: 15px 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ticker-wrapper {
+  height: 40px; /* Visible area height */
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-move {
+  display: flex;
+  flex-direction: column;
+  animation: scrollUp 12s linear infinite;
+}
+
+.ticker-move p {
+  margin: 0;
+  padding: 8px 15px;
+  font-size: 14px;
+  color: #444;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* SCROLL EFFECT */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-40px);
+  }
+  40% {
+    transform: translateY(-80px);
+  }
+  60% {
+    transform: translateY(-120px);
+  }
+  80% {
+    transform: translateY(-160px);
+  }
+  100% {
+    transform: translateY(0); /* Loop back */
+  }
+}
+/* Smooth mobile scrolling */
+.scroll-area {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding: 15px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  touch-action: pan-y; /* makes swipe easier */
+}
+
+/* hide scrollbar */
+.scroll-area::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .scroll-area {
+    max-height: 70vh;
+  }
+}
+.package-desc {
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 15px;
+}
+
+/* collapsed height */
+.package-desc.collapsed {
+  max-height: 280px;
+}
+
+/* expanded height */
+.package-desc.expanded {
+  max-height: 800px; /* large enough to fit all text */
+}
+
+/* Read more button */
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #ff6600;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.flip-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f1f1;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,112 +1,120 @@
 {
   "packages": [
     {
-      "id": "1",
-      "name": "Goa Beach Bliss ",
-      "price": 2500,
-      "offerPrice": 1899,
-      "duration": "7 Days / 6 Nights",
-      "imageUrl": "3388.jpg",
-      "desc": "Enjoy the sun, sand, and sea at Goa's beautiful beaches. Perfect for families and couples.<h1>HI</h1>",
-      "rating": 4.5,
-      "reviews": 120,
-      "sale": "Christmas Sale"
-    },
-    {
-      "id": "2",
-      "name": "Ranthambore Jungle Safari",
-      "price": 3000,
-      "offerPrice": 2200,
-      "duration": "5 Days / 4 Nights",
+      "id": "DW001",
+      "name": "Dream World Super Visa",
+      "price": 800,
+      "offerPrice": 1000,
+      "duration": "Full Day",
       "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Explore the wild in Ranthambore National Park. Spot tigers and other wildlife in their natural habitat.",
+      "desc": "Dream World Super Visa\n\nEntry Ticket Prices:\n• Till 31 Oct 2025: 800 THB (Adult/Child)\n• From 01 Nov 2025: 1000 THB (Adult/Child)\n\nLunch Buffet:\n• 150 THB (11:30 AM – 2 PM)\n\nIncludes:\n• 26 rides, unlimited rides\n• 4D, Alien, Bump Car, Haunted House\n• Snow Town, Go-Kart, Bicycle Boat, Bump Boat\n\nExcludes:\n• Carnival Games\n\nChild Policy:\n• Below 90 cm: Free entry\n\nTransfers:\n• Car (2-3 pax): 1800 THB\n• SUV (3-4 pax): 2000 THB\n• Van (5-10 pax): 2400 THB\n\nOpen: 10 AM – 5 PM\nMM Holidays Contact: +66 875 178 432 / +66 823 221 031",
       "rating": 4.7,
-      "reviews": 98,
-      "sale": ""
+      "reviews": 520,
+      "sale": "Entry + Rides"
     },
+
     {
-      "id": "3",
-      "name": "Himalayan Hiking Adventure",
-      "price": 4000,
-      "offerPrice": 3200,
-      "duration": "10 Days / 9 Nights",
+      "id": "SA001",
+      "name": "Siam Amazing Park",
+      "price": 450,
+      "offerPrice": 650,
+      "duration": "Full Day",
       "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Trek through the majestic Himalayas and experience breathtaking mountain views.",
-      "rating": 4.8,
-      "reviews": 75,
-      "sale": "New Year Offer"
-    },
-    {
-      "id": "4",
-      "name": "Desert Hot Air Balloon / summer offer ",
-      "price": 2000,
-      "offerPrice": 999,
-      "duration": "3 Days / 2 Nights",
-      "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Float above the desert in a hot air balloon and enjoy a unique sunrise experience.",
-      "rating": 4.3,
-      "reviews": 60,
-      "sale": ""
-    },
-    {
-      "id": "5",
-      "name": "European City Tour",
-      "price": 6000,
-      "offerPrice": 5000,
-      "duration": "14 Days / 13 Nights",
-      "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Discover Europe's iconic cities, rich culture, and historic landmarks in 14 days.",
+      "desc": "Siam Amazing Park – Full Day Access\n\nTourist Ticket:\n• Adult: 550 THB\n• Child: 450 THB\n\nWith Indian Buffet:\n• Adult: 650 THB\n• Child: 500 THB\n\nExpat/Thai Resident:\n• Adult: 500 THB\n• Child: 400 THB\n\nExpat With Indian Buffet:\n• Adult: 600 THB\n• Child: 450 THB\n\nChild Policy:\n• 100–130 cm: Child ticket\n• Under 100 cm: Free\n\nIncludes rides + water park.",
       "rating": 4.6,
-      "reviews": 200,
-      "sale": "Summer Sale"
+      "reviews": 400,
+      "sale": "Rides + Water Park + Buffet"
     },
+
     {
-      "id": "6",
-      "name": "Kerala Backwaters",
-      "price": 3500,
-      "offerPrice": 2800,
-      "duration": "6 Days / 5 Nights",
+      "id": "AC001",
+      "name": "Ancient City (Muang Boran)",
+      "price": 300,
+      "offerPrice": 500,
+      "duration": "Half Day",
       "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Relax on a houseboat and enjoy the serene backwaters of Kerala.",
-      "rating": 4.7,
-      "reviews": 140,
-      "sale": ""
+      "desc": "Ancient City Ticket Prices:\n• Adult: 370 THB\n• Child (6-14): 300 THB\n\nAncient City + Buffet:\n• Adult: 500 THB\n• Child 6–14: 430 THB\n• Child 2–5: 150 THB\n\nChild below 6 years: Free\nLocation: Muang Boran Samut Prakan.",
+      "rating": 4.5,
+      "reviews": 280,
+      "sale": "Entry + Buffet Options"
     },
+
     {
-      "id": "7",
-      "name": "Andaman Scuba Diving",
-      "price": 4500,
-      "offerPrice": 3900,
-      "duration": "8 Days / 7 Nights",
+      "id": "ER001",
+      "name": "Erawan Museum",
+      "price": 200,
+      "offerPrice": 300,
+      "duration": "2 Hours",
       "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Dive into the crystal-clear waters of Andaman and explore vibrant marine life.",
-      "rating": 4.9,
-      "reviews": 88,
-      "sale": "Special Offer"
+      "desc": "Erawan Museum Ticket Prices:\n• Adult: 300 THB\n• Child (6-14): 200 THB\n\nCombo (Ancient City + Erawan Museum):\n• Adult: 550 THB\n• Child: 390 THB\n\nBelow 6 years: Free\nFamous 3-headed elephant museum.",
+      "rating": 4.6,
+      "reviews": 210,
+      "sale": "Museum Entry"
     },
+
     {
-      "id": "8",
-      "name": "Jaipur Heritage Tour",
-      "price": 1500,
-      "offerPrice": 1200,
-      "duration": "4 Days / 3 Nights",
+      "id": "STC001",
+      "name": "Space & Time Cube – Immersive Museum",
+      "price": 300,
+      "offerPrice": 798,
+      "duration": "2-3 Hours",
       "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Explore the royal palaces, forts, and colorful bazaars of Jaipur.",
+      "desc": "Space & Time Cube – Seacon Bangkae\n\nPackage 1: Main Hall + Rail Cinema\n• Adult: 620 THB (798 THB)\n• Child: 520 THB (648 THB)\n\nPackage 2: VR Experience Hall\n• 300 THB (399 THB)\n\nChild Rules:\n• Adult ticket: Height > 140 cm\n• Child ticket & senior 60+: Below 140 cm\n• Child under 100 cm: Not allowed in Rail Cinema / VR\n• Child under 80 cm: Free\n\nIncludes:\n• 20+ photo spots\n• Rail Cinema: 8 stories\n• VR Hall: 1 game per card",
       "rating": 4.4,
-      "reviews": 50,
-      "sale": ""
+      "reviews": 150,
+      "sale": "Immersive Art Experience"
     },
+
     {
-      "id": "1765268479427",
-      "name": "New Package",
-      "price": 6,
-      "offerPrice": 655,
-      "duration": "5 Days / 4 Nights",
-      "imageUrl": "dAbout KeyChainN Pic.jpg",
-      "desc": "This is a new package added recently. Details coming soon.",
-      "rating": 0,
-      "reviews": 0,
-      "sale": "Launch Offer"
+      "id": "JW001",
+      "name": "Jurassic World Bangkok – The Experience",
+      "price": 570,
+      "offerPrice": 950,
+      "duration": "1-1.5 Hours",
+      "imageUrl": "About KeyChainN Pic.jpg",
+      "desc": "Jurassic World The Experience – Asiatique\n\nWeekday (Off-Peak):\n• Adult (11+): 750 THB\n• Child (3-10): 570 THB\n• 0-3 yrs: Free\n\nPeak (After 4 PM, Sat/Sun, Holidays):\n• Adult: 950 THB\n• Child: 780 THB\n• 0-3 yrs: Free\n\nChild Rules:\n• Under 3: Free\n• Under 18 must be with adult\n\nOpen: 11 AM – 10 PM\nLast entry: 9 PM",
+      "rating": 4.8,
+      "reviews": 510,
+      "sale": "Weekday & Peak Prices"
+    },
+
+    {
+      "id": "CR001",
+      "name": "Chao Phraya Princess Dinner Cruise – Indian Buffet",
+      "price": 900,
+      "offerPrice": 980,
+      "duration": "2 Hours",
+      "imageUrl": "About KeyChainN Pic.jpg",
+      "desc": "Chao Phraya Princess Dinner Cruise – Terminal 21 Rama 3\n\nIndian Market Prices:\n• Adult: 980 THB\n• Child (4-10): 850 THB\n• 0–3 yrs: Free\n\nLocal/Expat Prices:\n• Adult: 900 THB\n• Child: 790 THB\n\nIncludes:\n• Welcome drink\n• Indian buffet\n• Tea/Coffee\n• Live music\n\nCheck-in: 17:45–18:45 (G Floor)\nDeparture: 19:30\nArrival: 21:30\nMini birthday cake on request.",
+      "rating": 4.7,
+      "reviews": 610,
+      "sale": "Dinner Cruise"
+    },
+
+    {
+      "id": "MK001",
+      "name": "Mahanakhon SkyWalk – 74th & 78th Floor",
+      "price": 350,
+      "offerPrice": 1500,
+      "duration": "2 Hours",
+      "imageUrl": "About KeyChainN Pic.jpg",
+      "desc": "Mahanakhon SkyWalk (Indoor 74 + Rooftop 78)\n\nTickets – Morning (10:00–15:30) / Sunset (15:31–19:00)\n• Adult SkyVerse: 1000 / 1200\n• Drink Package: 1100 / 1300 (1 soft drink)\n• Above the Clouds: 1250 / 1450 (1 drink at SkyBeach 78F)\n• Food Package: 1200 / 1400\n• Junior (3–12): 550 / 550\n• Senior (60+): 550 / 550\n• SkyVerse Only: 350 / 350\n• Tilt & Thrill: 1300 / 1500\n\nRemarks:\n• Outdoor area closes during bad weather\n• Prices may change – confirm before visit",
+      "rating": 4.9,
+      "reviews": 880,
+      "sale": "Morning + Sunset Pricing"
+    },
+
+    {
+      "id": "BY001",
+      "name": "Baiyoke Sky Restaurant + Rooftop View",
+      "price": 350,
+      "offerPrice": 650,
+      "duration": "2 Hours",
+      "imageUrl": "About KeyChainN Pic.jpg",
+      "desc": "Baiyoke Sky Buffet + Revolving Deck Visit\n\nAll Day Buffet:\n• Adult: 650 THB\n• Child: 350 THB\n\nIncludes:\n• Indian, Mediterranean & Thai buffet\n• Visit to 75th floor floating market\n• Revolving rooftop deck access\n\nOpen: 12 PM – 8 PM",
+      "rating": 4.6,
+      "reviews": 430,
+      "sale": "Buffet + Rooftop"
     }
   ]
 }

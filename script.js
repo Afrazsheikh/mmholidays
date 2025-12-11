@@ -16,6 +16,7 @@ const closePopup = document.getElementById("closePopup");
 const searchInput = document.getElementById("packageSearch");
 const searchResults = document.getElementById("searchResults");
 const packages = document.querySelectorAll(".package-card-container");
+const trendingContainer = document.querySelector(".trending-container");
 
 let currentPage = 1;
 const itemsPerPage = 6;
@@ -221,13 +222,25 @@ function renderPackages(packagesToDisplay) {
         </div>
       </div>
 
-      <!-- Back Side -->
-      <div class="package-card package-card-back">
-        <div class="package-desc">
-          <p>${pkg.desc || "Package details will appear here."}</p>
-        </div>
-        <button class="flip-back-btn">Back</button>
-      </div>
+     <!-- Back Side -->
+<div class="package-card package-card-back">
+<button class="flip-back-btn">
+  <i class="fas fa-arrow-left"></i>
+  Back
+</button>
+
+  
+  <div class="package-desc collapsed" id="desc-${pkg.id}">
+    <p>${pkg.desc || "Package details will appear here."}</p>
+  </div>
+
+  <button class="read-more-btn" onclick="toggleReadMore('${pkg.id}')">
+    Read More
+  </button>
+
+</div>
+
+
 
     </div>
   </div>
@@ -581,3 +594,45 @@ document.addEventListener("click", (e) => {
     searchResults.style.display = "none";
   }
 });
+let scrollPos = 0;
+function autoScrollTrending() {
+  scrollPos += 1;
+  if (
+    scrollPos >=
+    trendingContainer.scrollWidth - trendingContainer.clientWidth
+  ) {
+    scrollPos = 0;
+  }
+  trendingContainer.scrollLeft = scrollPos;
+  requestAnimationFrame(autoScrollTrending);
+}
+
+autoScrollTrending();
+document.addEventListener("DOMContentLoaded", () => {
+  const addButtons = document.querySelectorAll(".add-btn");
+
+  addButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      // Change the button to the 'added' status
+      button.classList.remove("add-btn");
+      button.classList.add("added");
+      button.innerHTML = "<span>ADDED</span>";
+      // You might want to disable it afterwards
+      button.disabled = true;
+    });
+  });
+});
+function toggleReadMore(id) {
+  const desc = document.getElementById(`desc-${id}`);
+  const btn = event.target;
+
+  if (desc.classList.contains("collapsed")) {
+    desc.classList.remove("collapsed");
+    desc.classList.add("expanded");
+    btn.textContent = "Read Less";
+  } else {
+    desc.classList.add("collapsed");
+    desc.classList.remove("expanded");
+    btn.textContent = "Read More";
+  }
+}
