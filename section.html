@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trending Packages Ticker</title>
+    <style>
+      /* TICKER SECTION */
+      .trending-ticker {
+        background: #fff7e6;
+        border-left: 4px solid #ff9800;
+        padding: 10px 0;
+        margin: 15px 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .ticker-wrapper {
+        height: 40px; /* Visible area height */
+        overflow: hidden;
+        position: relative;
+      }
+
+      .ticker-move {
+        display: flex;
+        flex-direction: column;
+        animation: scrollUp 12s linear infinite;
+      }
+
+      .ticker-move p {
+        margin: 0;
+        padding: 8px 15px;
+        font-size: 14px;
+        color: #444;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      /* SCROLL EFFECT */
+      @keyframes scrollUp {
+        0% {
+          transform: translateY(0);
+        }
+        20% {
+          transform: translateY(-40px);
+        }
+        40% {
+          transform: translateY(-80px);
+        }
+        60% {
+          transform: translateY(-120px);
+        }
+        80% {
+          transform: translateY(-160px);
+        }
+        100% {
+          transform: translateY(0); /* Loop back */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="trending-ticker">
+      <div class="ticker-wrapper">
+        <div class="ticker-move">
+          <p>🔥 Bali 5N/6D package trending this week!</p>
+          <p>
+            🌄 Kashmir snowfall trips now available — best time to visit:
+            Dec–Feb
+          </p>
+          <p>🏖️ Maldives honeymoon package 20% off</p>
+          <p>⛰️ Himachal road trips — best time: March–June</p>
+          <p>🕌 Dubai New Year special — limited seats!</p>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

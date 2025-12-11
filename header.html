@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Your Tour — Hero</title>
+    <style>
+      :root {
+        --accent: #ff9a2a;
+        --accent-dark: #e97800;
+        --muted: #6b6b6b;
+        --bg: #fffaf8;
+        --card: #ffffff;
+        --container-width: 1100px;
+        font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(180deg, #fff 0%, #fffaf6 100%);
+      }
+      .page {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+      .wrap {
+        width: 100%;
+        max-width: var(--container-width);
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 30px;
+        align-items: center;
+      }
+      .hero {
+        background: transparent;
+        padding: 48px 36px;
+        border-radius: 14px;
+      }
+      .kicker {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+      .logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        color: white;
+        font-weight: 700;
+      }
+      .title {
+        font-size: 48px;
+        line-height: 1.02;
+        margin: 0 0 12px;
+        color: #111;
+        font-weight: 800;
+      }
+      .title .highlight {
+        color: var(--accent);
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 16px;
+        margin: 0 0 22px;
+      }
+      .search {
+        display: flex;
+        align-items: center;
+        background: var(--card);
+        padding: 10px;
+        border-radius: 999px;
+        box-shadow: 0 6px 20px rgba(17, 24, 39, 0.06);
+        gap: 10px;
+      }
+      .search input {
+        border: 0;
+        outline: 0;
+        background: transparent;
+        padding: 12px 8px;
+        font-size: 15px;
+        width: 100%;
+      }
+      .search .btn {
+        background: var(--accent);
+        color: #fff;
+        padding: 10px 16px;
+        border-radius: 999px;
+        border: 0;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .rightcol {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .card {
+        background: var(--card);
+        padding: 14px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(17, 24, 39, 0.06);
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .top-iframe {
+        display: block;
+        width: 100%; /* Full width */
+        height: 150px; /* Adjust height as needed */
+        border: none; /* Remove border */
+        position: relative; /* stays in flow, can use fixed if you want always on top */
+        top: 0;
+        left: 0;
+      }
+
+      .card img {
+        width: 74px;
+        height: 54px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .card .meta {
+        font-size: 13px;
+        color: #444;
+      }
+      .small {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .floating-photos {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .floating-photos img {
+        width: 64px;
+        height: 44px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 4px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      }
+      /* responsive */
+      @media (max-width: 980px) {
+        .wrap {
+          grid-template-columns: 1fr;
+        }
+        .rightcol {
+          order: -1;
+        }
+        .title {
+          font-size: 36px;
+          text-align: center;
+        }
+        .hero {
+          padding: 28px;
+        }
+        .search {
+          width: 100%;
+        }
+        .floating-photos {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <iframe src="section.html" class="top-iframe"></iframe>
+
+    <div class="page">
+      <div class="wrap">
+        <div class="hero">
+          <div class="kicker">
+            <div class="logo">MM</div>
+            <div class="small">
+              Explore Expert-led, AI-powered multi-day tours.
+            </div>
+          </div>
+          <h1 class="title">
+            Your Tour,<br /><span class="highlight"
+              >Perfectly Personalised!</span
+            >
+          </h1>
+          <p class="subtitle">
+            Explore expert-led, AI-powered multi-day tours tailored to your
+            taste. Choose, customize and book in a few clicks.
+          </p>
+
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              flex-wrap: wrap;
+              align-items: center;
+            "
+          >
+            <div style="flex: 1; min-width: 220px">
+              <div class="search">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21 21l-4.35-4.35"
+                    stroke="#9AA4B2"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="6"
+                    stroke="#9AA4B2"
+                    stroke-width="2"
+                  />
+                </svg>
+                <input
+                  placeholder="Search for Bangkok, activities or attractions"
+                />
+                <button class="btn">Search</button>
+              </div>
+              <div
+                style="margin-top: 12px; color: var(--muted); font-size: 13px"
+              >
+                Christmas Sale:
+                <strong style="color: var(--accent)">Save Upto 40% off</strong>
+              </div>
+            </div>
+
+            <div style="min-width: 220px">
+              <div
+                style="
+                  display: flex;
+                  gap: 10px;
+                  align-items: center;
+                  justify-content: flex-end;
+                "
+              >
+                <div class="small">INR ₹ • Login</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 22px">
+            <div class="floating-photos">
+              <img src="images/About KeyChainN Pic.jpg" alt="thumb1" />
+              <img src="images/About KeyChainN Pic.jpg" alt="thumb2" />
+              <img src="images/About KeyChainN Pic.jpg" alt="thumb3" />
+              <img src="images/About KeyChainN Pic.jpg" alt="thumb4" />
+            </div>
+          </div>
+        </div>
+
+        <aside class="rightcol">
+          <div class="card">
+            <img src="images/About KeyChainN Pic.jpg" alt="a" />
+            <div>
+              <div style="font-weight: 700; color: #111">
+                Burj Khalifa At The Top SKY
+              </div>
+              <div class="meta small">Level 148 • Sunset slot • 1 Hour</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="images/About KeyChainN Pic.jpg" alt="b" />
+            <div>
+              <div style="font-weight: 700; color: #111">
+                Maldives: Private Sandbank Picnic
+              </div>
+              <div class="meta small">
+                5 Hours • Custom picnic with transfers
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="justify-content: space-between">
+            <div style="display: flex; gap: 12px; align-items: center">
+              <img
+                src="images/About KeyChainN Pic.jpg"
+                alt="c"
+                style="width: 54px; height: 44px"
+              />
+              <div>
+                <div style="font-weight: 700; color: #111">Private kimono</div>
+                <div class="small">Add-ons &amp; custom requests</div>
+              </div>
+            </div>
+            <div style="color: var(--accent); font-weight: 700">Adding…</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
