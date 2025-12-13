@@ -7,12 +7,11 @@
       "offerPrice": 1000,
       "duration": "Full Day",
       "imageUrl": "About KeyChainN Pic.jpg",
-      "desc": "Dream World Super Visa\n\nEntry Ticket Prices:\n• Till 31 Oct 2025: 800 THB (Adult/Child)\n• From 01 Nov 2025: 1000 THB (Adult/Child)\n\nLunch Buffet:\n• 150 THB (11:30 AM – 2 PM)\n\nIncludes:\n• 26 rides, unlimited rides\n• 4D, Alien, Bump Car, Haunted House\n• Snow Town, Go-Kart, Bicycle Boat, Bump Boat\n\nExcludes:\n• Carnival Games\n\nChild Policy:\n• Below 90 cm: Free entry\n\nTransfers:\n• Car (2-3 pax): 1800 THB\n• SUV (3-4 pax): 2000 THB\n• Van (5-10 pax): 2400 THB\n\nOpen: 10 AM – 5 PM\nMM Holidays Contact: +66 875 178 432 / +66 823 221 031",
+      "desc": "\n<h2 style=\"color: #00698f;\">Dream World Super Visa Entry Ticket Prices</h2>\n<p style=\"font-family: Arial, sans-serif; font-size: 14px; color: #333;\">\n- Till 31 Oct 2025: 800 THB (Adult/Child)\n</p>\nEntry Ticket Prices:\n• Till 31 Oct 2025: 800 THB (Adult/Child)\n• From 01 Nov 2025: 1000 THB (Adult/Child)\n\nLunch Buffet:\n• 150 THB (11:30 AM – 2 PM)\n\nIncludes:\n• 26 rides, unlimited rides\n• 4D, Alien, Bump Car, Haunted House\n• Snow Town, Go-Kart, Bicycle Boat, Bump Boat\n\nExcludes:\n• Carnival Games\n\nChild Policy:\n• Below 90 cm: Free entry\n\nTransfers:\n• Car (2-3 pax): 1800 THB\n• SUV (3-4 pax): 2000 THB\n• Van (5-10 pax): 2400 THB\n\nOpen: 10 AM – 5 PM\nMM Holidays Contact: +66 875 178 432 / +66 823 221 031",
       "rating": 4.7,
       "reviews": 520,
       "sale": "Entry + Rides"
     },
-
     {
       "id": "SA001",
       "name": "Siam Amazing Park",
@@ -25,7 +24,6 @@
       "reviews": 400,
       "sale": "Rides + Water Park + Buffet"
     },
-
     {
       "id": "AC001",
       "name": "Ancient City (Muang Boran)",
@@ -38,7 +36,6 @@
       "reviews": 280,
       "sale": "Entry + Buffet Options"
     },
-
     {
       "id": "ER001",
       "name": "Erawan Museum",
@@ -51,7 +48,6 @@
       "reviews": 210,
       "sale": "Museum Entry"
     },
-
     {
       "id": "STC001",
       "name": "Space & Time Cube – Immersive Museum",
@@ -64,7 +60,6 @@
       "reviews": 150,
       "sale": "Immersive Art Experience"
     },
-
     {
       "id": "JW001",
       "name": "Jurassic World Bangkok – The Experience",
@@ -77,7 +72,6 @@
       "reviews": 510,
       "sale": "Weekday & Peak Prices"
     },
-
     {
       "id": "CR001",
       "name": "Chao Phraya Princess Dinner Cruise – Indian Buffet",
@@ -90,7 +84,6 @@
       "reviews": 610,
       "sale": "Dinner Cruise"
     },
-
     {
       "id": "MK001",
       "name": "Mahanakhon SkyWalk – 74th & 78th Floor",
@@ -103,7 +96,6 @@
       "reviews": 880,
       "sale": "Morning + Sunset Pricing"
     },
-
     {
       "id": "BY001",
       "name": "Baiyoke Sky Restaurant + Rooftop View",
