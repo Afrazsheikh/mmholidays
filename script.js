@@ -87,163 +87,88 @@ function renderPackages(packagesToDisplay) {
   packagesToDisplay.forEach((pkg) => {
     const isSelected = selectedPackages.some((p) => p.id === pkg.id);
 
-    //     const cardHTML = `
-    //       <div class="package-card-container ${
-    //         isSelected ? "selected" : ""
-    //       }" id="${slugify(pkg.name)}">
-    //         <div class="flip-card-inner">
-
-    //           <!-- FRONT -->
-    //           <div class="package-card-front">
-    //           <div class="info-icon tooltip">
-    //   <i class="fas fa-info-circle"></i>
-    //   <span class="tooltip-text">Click for package info</span>
-    // </div>
-
-    //             <img src="images/${pkg.imageUrl}" class="card-image" alt="${
-    //       pkg.name
-    //     }">
-
-    //             <div class="card-content">
-    //               <h3>${pkg.name}</h3>
-    //               <p class="duration">${pkg.duration}</p>
-
-    //               <div class="action-buttons">
-    //                 <!-- Removed BOOK NOW button -->
-    //                 <button class="callback-btn" data-wa="${pkg.name}">
-    //                   REQUEST A CALLBACK
-    //                 </button>
-    //               </div>
-    // <div class="card-footer">
-
-    //   <div class="price-info">
-    //     <span class="original-price">$${pkg.price}</span>
-    //     <span class="offer-price">$${pkg.offerPrice}</span>
-    //     ${pkg.sale ? `<span class="sale-tag">${pkg.sale}</span>` : ""}
-    //   </div>
-
-    //   <button class="selection-toggle-btn ${
-    //     isSelected ? "selected" : ""
-    //   }" data-id="${pkg.id}">
-    //     <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-    //     ${isSelected ? "Remove from Selection" : "Add to Selection"}
-    //   </button>
-
-    // </div>
-
-    //             </div>
-    //           </div>
-
-    //           <!-- BACK -->
-    //           <div class="package-card-back">
-    //             <h4>Package Details</h4>
-    //             <div class="package-desc">${formatDescription(pkg.desc)}</div>
-    //             <button class="flip-back-btn">Back</button>
-    //           </div>
-
-    //         </div>
-    //       </div>
-    //     `;
     const cardHTML = `
-  <div class="package-card-container">
+<div class="package-card-container">
 
-    <div class="flip-card-inner">
+  <div class="package-card package-card-front">
 
-      <!-- Front Side -->
-      <div class="package-card package-card-front">
-      
-        <div class="card-img-container">
-          <img src="images/${pkg.imageUrl}" class="card-img" alt="${pkg.name}">
-          <div class="save-tag">
-            SAVE INR ${pkg.price - pkg.offerPrice}
-          </div>
-          <div class="info-icon tooltip">
-            <i class="fas fa-info-circle"></i>
-            <span class="tooltip-text">Click for package info</span>
-          </div>
-        </div>
+    <div class="card-img-container">
+      <img src="images/${pkg.imageUrl}" class="card-img" alt="${pkg.name}">
+      <div class="save-tag">
+        SAVE INR ${pkg.price - pkg.offerPrice}
+      </div>
+    </div>
 
-        <div class="card-body">
-          <p class="duration">${pkg.duration}</p>
+    <div class="card-body">
+      <p class="duration">${pkg.duration}</p>
 
-          <div class="rating-row">
-            <span class="rating">⭐ ${pkg.rating}</span>
-            <span class="rating-count">(${pkg.ratingCount})</span>
-          </div>
-
-          <h3 class="pkg-title">${pkg.name}</h3>
-
-          <div class="location-row">
-            <span>${pkg.location1}</span> • 
-            <span>${pkg.location2}</span>
-          </div>
-
-          ${pkg.sale ? `<div class="sale-banner">${pkg.sale}</div>` : ""}
-
-          <div class="price-row">
-            <span class="old-price">INR ${pkg.price.toLocaleString()}</span>
-            <span class="discount-tag">SAVE INR ${(
-              pkg.price - pkg.offerPrice
-            ).toLocaleString()}</span>
-          </div>
-
-          <div class="new-price">
-            INR ${pkg.offerPrice.toLocaleString()} <span class="adult">/Adult</span>
-          </div>
-
-          <!-- Add to Selection small interactive link -->
-        
-<div class="action-buttons" style="display:flex; gap:10px; margin-top:10px; align-items:center;">
-
-  <!-- Add to Selection button on left (20%) -->
- <div class="add-to-selection" style="flex: 0 0 20%;">
-  <button class="selection-toggle-btn ${
-    isSelected ? "selected" : ""
-  }" data-id="${
-      pkg.id
-    }" style="width:100%; font-size:0.85em; padding:11px 5px; height:45px;">
-    <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
-    ${isSelected ? "Remove" : " Add"}
-  </button>
-</div>
-
-
-  <!-- Request Callback button on right (80%) -->
-  <div style="flex: 0 0 80%;">
-    <button class="callback-btn" data-wa="${
-      pkg.name
-    }" style="width:100%; padding:8px 10px; font-size:0.85em;">
-      Request Callback
-    </button>
-  </div>
-
-</div>
-
-        </div>
+      <div class="rating-row">
+        <span class="rating">⭐ ${pkg.rating}</span>
+        <span class="rating-count">(${pkg.ratingCount})</span>
       </div>
 
-     <!-- Back Side -->
-<div class="package-card package-card-back">
-<button class="flip-back-btn">
-  <i class="fas fa-arrow-left"></i>
-  Back
-</button>
+      <h3 class="pkg-title">${pkg.name}</h3>
 
+      <div class="location-row">
+        <span>${pkg.location1}</span> • 
+        <span>${pkg.location2}</span>
+      </div>
+
+      ${pkg.sale ? `<div class="sale-banner">${pkg.sale}</div>` : ""}
+
+      <div class="price-row">
+        <span class="old-price">INR ${pkg.price.toLocaleString()}</span>
+        <span class="discount-tag">SAVE INR ${(
+          pkg.price - pkg.offerPrice
+        ).toLocaleString()}</span>
+      </div>
+
+      <div class="new-price">
+        INR ${pkg.offerPrice.toLocaleString()} <span class="adult">/Adult</span>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-buttons" style="display:flex; gap:10px; margin-top:10px;">
+        
+        <div style="flex:0 0 20%;">
+          <button class="selection-toggle-btn ${isSelected ? "selected" : ""}"
+            data-id="${pkg.id}">
+            <i class="fas fa-${isSelected ? "times" : "plus"}"></i>
+            ${isSelected ? "Remove" : "Add"}
+          </button>
+        </div>
+
+        <div style="flex:0 0 80%;">
+          <button class="callback-btn" data-wa="${pkg.name}">
+            Request Callback
+          </button>
+        </div>
+
+      </div>
+
+      <!-- SHORT DESCRIPTION -->
   
-  <div class="package-desc collapsed" id="desc-${pkg.id}">
-    <p>${pkg.desc || "Package details will appear here."}</p>
-  </div>
 
-  <button class="read-more-btn" onclick="toggleReadMore('${pkg.id}')">
-    Read More
-  </button>
 
+      <!-- FULL DESCRIPTION -->
+      <!-- DESCRIPTION -->
+<div class="package-desc" id="desc-${pkg.id}">
+  <p class="desc-preview">
+    ${truncateWords(pkg.desc, 40)}
+  </p>
+
+  <p class="desc-full">
+    ${pkg.desc || "Package details will appear here."}
+  </p>
 </div>
 
-
+<button class="read-more-btn" onclick="toggleDesc('${pkg.id}', this)">
+  Read More
+</button>
 
     </div>
   </div>
+</div>
 `;
 
     packagesGrid.insertAdjacentHTML("beforeend", cardHTML);
@@ -634,5 +559,21 @@ function toggleReadMore(id) {
     desc.classList.add("collapsed");
     desc.classList.remove("expanded");
     btn.textContent = "Read More";
+  }
+}
+function truncateWords(text = "", limit = 40) {
+  const words = text.split(" ");
+  return words.length > limit ? words.slice(0, limit).join(" ") + "..." : text;
+}
+
+function toggleDesc(id, btn) {
+  const desc = document.getElementById(`desc-${id}`);
+
+  if (!desc.classList.contains("expanded")) {
+    desc.classList.add("expanded");
+    btn.innerText = "Read Less";
+  } else {
+    desc.classList.remove("expanded");
+    btn.innerText = "Read More";
   }
 }

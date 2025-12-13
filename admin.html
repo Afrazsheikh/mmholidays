@@ -3,6 +3,7 @@
   <head>
     <title>Admin Panel - Manage Packages</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -13,7 +14,7 @@
       .card {
         background: #fff;
         border-radius: 10px;
-        max-width: 500px;
+        max-width: 900px;
         margin: 10px auto;
         padding: 15px;
         box-shadow: 0 0 10px #bbb;
@@ -91,6 +92,9 @@
           padding: 10px;
         }
       }
+      .ck-editor__editable {
+        min-height: 200px;
+      }
     </style>
   </head>
   <body>
@@ -121,7 +125,7 @@
       <div id="loader"></div>
 
       <label>Description (HTML):</label>
-      <textarea id="desc" rows="6"></textarea>
+      <textarea id="desc"></textarea>
 
       <button onclick="saveJSON()">💾 Save Changes</button>
       <p id="output" style="color: green; font-weight: bold"></p>
@@ -139,6 +143,69 @@
 
       let allPackages = [];
       let selectedIndex = 0;
+      let descEditor;
+
+      // CKEditor full toolbar with color picker
+      ClassicEditor.create(document.querySelector("#desc"), {
+        toolbar: [
+          "heading",
+          "|",
+          "bold",
+          "italic",
+          "underline",
+          "strikethrough",
+          "link",
+          "|",
+          "fontSize",
+          "fontColor",
+          "fontBackgroundColor",
+          "fontFamily",
+          "|",
+          "bulletedList",
+          "numberedList",
+          "alignment",
+          "|",
+          "outdent",
+          "indent",
+          "|",
+          "undo",
+          "redo",
+        ],
+        fontColor: {
+          colors: [
+            { color: "#000000", label: "Black" },
+            { color: "#FFFFFF", label: "White" },
+            { color: "#FF0000", label: "Red" },
+            { color: "#00FF00", label: "Lime" },
+            { color: "#0000FF", label: "Blue" },
+            { color: "#FFFF00", label: "Yellow" },
+            { color: "#FFA500", label: "Orange" },
+            { color: "#800080", label: "Purple" },
+            { color: "#00FFFF", label: "Aqua" },
+            { color: "#FFC0CB", label: "Pink" },
+          ],
+          columns: 5,
+        },
+        fontBackgroundColor: {
+          colors: [
+            { color: "#000000", label: "Black" },
+            { color: "#FFFFFF", label: "White" },
+            { color: "#FF0000", label: "Red" },
+            { color: "#00FF00", label: "Lime" },
+            { color: "#0000FF", label: "Blue" },
+            { color: "#FFFF00", label: "Yellow" },
+            { color: "#FFA500", label: "Orange" },
+            { color: "#800080", label: "Purple" },
+            { color: "#00FFFF", label: "Aqua" },
+            { color: "#FFC0CB", label: "Pink" },
+          ],
+          columns: 5,
+        },
+      })
+        .then((editor) => {
+          descEditor = editor;
+        })
+        .catch((err) => console.error(err));
 
       async function loadData() {
         const res = await fetch(
@@ -149,14 +216,12 @@
 
         const select = document.getElementById("packageSelect");
         select.innerHTML = "";
-
         allPackages.forEach((pkg, index) => {
           const opt = document.createElement("option");
           opt.value = index;
           opt.textContent = pkg.name;
           select.appendChild(opt);
         });
-
         loadSelectedPackage();
       }
 
@@ -164,12 +229,11 @@
         if (allPackages.length === 0) return;
         selectedIndex = document.getElementById("packageSelect").value;
         const pkg = allPackages[selectedIndex];
-
         document.getElementById("name").value = pkg.name;
         document.getElementById("price").value = pkg.price;
         document.getElementById("offerPrice").value = pkg.offerPrice;
         document.getElementById("duration").value = pkg.duration;
-        document.getElementById("desc").value = pkg.desc;
+        descEditor.setData(pkg.desc || "");
         document.getElementById("previewImage").src = pkg.imageUrl
           ? `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/images/${pkg.imageUrl}`
           : "";
@@ -187,14 +251,12 @@
         };
         allPackages.push(newPkg);
         selectedIndex = allPackages.length - 1;
-
         const select = document.getElementById("packageSelect");
         const opt = document.createElement("option");
         opt.value = selectedIndex;
         opt.textContent = "➕ New Package";
         select.appendChild(opt);
         select.value = selectedIndex;
-
         loadSelectedPackage();
       }
 
@@ -214,14 +276,10 @@
         const token = document.getElementById("token").value;
         const fileInput = document.getElementById("packageImage");
         if (!fileInput.files[0]) return allPackages[selectedIndex]?.imageUrl;
-
         const file = fileInput.files[0];
         const loader = document.getElementById("loader");
         loader.style.display = "block";
-
         const path = `images/${file.name}`;
-
-        // Get existing image SHA to replace
         let sha = null;
         try {
           const res = await fetch(
@@ -230,12 +288,10 @@
           const data = await res.json();
           if (data.sha) sha = data.sha;
         } catch (err) {}
-
         return new Promise((resolve) => {
           const reader = new FileReader();
           reader.onload = async function (e) {
             const content = e.target.result.split(",")[1];
-
             const upload = await fetch(
               `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${path}`,
               {
@@ -246,16 +302,14 @@
                 },
                 body: JSON.stringify({
                   message: "Upload package image via admin panel",
-                  content: content,
-                  sha: sha,
+                  content,
+                  sha,
                 }),
               }
             );
-
             loader.style.display = "none";
-            if (upload.ok) {
-              resolve(file.name);
-            } else {
+            if (upload.ok) resolve(file.name);
+            else {
               alert("Image upload failed!");
               resolve(allPackages[selectedIndex]?.imageUrl);
             }
@@ -267,15 +321,13 @@
       async function saveJSON() {
         const token = document.getElementById("token").value;
         if (!token) return alert("GitHub Token is required!");
-
         const uploadedImageName = await uploadImage();
         const pkg = allPackages[selectedIndex];
-
         pkg.name = document.getElementById("name").value;
         pkg.price = Number(document.getElementById("price").value);
         pkg.offerPrice = Number(document.getElementById("offerPrice").value);
         pkg.duration = document.getElementById("duration").value;
-        pkg.desc = document.getElementById("desc").value;
+        pkg.desc = descEditor.getData();
         pkg.imageUrl = uploadedImageName;
 
         const newJson = { packages: allPackages };
